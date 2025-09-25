@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Hub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Home Page Specific Styles */
+        .main-header {
+            background: #f8f9fa;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .checkout-header {
+            background-color: #fff;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #6c757d;
+        }
+        .step.active .step-number {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .step.completed .step-number {
+            background-color: #198754;
+            color: white;
+        }
+        .step-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e9ecef;
+            z-index: 1;
+        }
+        .step-line-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            background-color: #0d6efd;
+            transition: width 0.3s ease;
+        }
+        .checkout-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .cart-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .summary-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 20px;
+        }
+        .btn-checkout {
+            background-color: #198754;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+        .btn-checkout:hover {
+            background-color: #157347;
+        }
+        .form-control:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        .payment-method {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .payment-method:hover {
+            border-color: #86b7fe;
+            background-color: #f8f9fa;
+        }
+        .payment-method.active {
+            border-color: #0d6efd;
+            background-color: #f0f7ff;
+        }
+        .nav-tabs .nav-link {
+            border: none;
+            color: #6c757d;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            margin-right: 0.5rem;
+        }
+        .nav-tabs .nav-link.active {
+            color: #0d6efd;
+            border-bottom: 3px solid #0d6efd;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Search -->
+    <header class="main-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <a href="#" class="text-decoration-none">
+                        <h1 class="h4 mb-0">Style Hub</h1>
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="input-group search-bar" style="max-width: 500px; margin: 0 auto;">
+                        <input type="text" class="form-control" placeholder="Search products...">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="d-flex w-100">
+                        <div class="d-flex align-items-center gap-3 me-auto">
+                            <div class="dropdown language-dropdown">
+                                <a class="btn btn-sm btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-globe me-1"></i> EN
+                                </a>
+                                <ul class="dropdown-menu language-menu">
+                                    <li><a class="dropdown-item" href="#">English</a></li>
+                                    <li><a class="dropdown-item" href="#">አማርኛ</a></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-outline-dark position-relative">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    0
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span> Categories
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../Home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Home.html#new-arrivals">New Arrivals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Home.html#featured-products">Featured Products</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Category/Men.html">Men's Fashion</a></li>
+                            <li><a class="dropdown-item" href="Category/Women.html">Women's Fashion</a></li>
+                            <li><a class="dropdown-item" href="Category/Electronics.html">Electronics</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="checkout-container">
+        <div class="row">
+            <!-- Left Column - Checkout Form -->
+            <div class="col-lg-8">
+                <div class="mb-4">
+                    <h4 class="mb-4 py-3">Shipping Information</h4>
+                    <form id="shippingForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="zipCode" class="form-label">ZIP Code</label>
+                                <input type="text" class="form-control" id="zipCode" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="country" class="form-label">Country</label>
+                            <select class="form-select" id="country" required>
+                                <option value="">Select Country</option>
+                                <option value="ET">Ethiopia</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="saveAddress">
+                            <label class="form-check-label" for="saveAddress">
+                                Save this information for next time
+                            </label>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Order Summary (Collapsible on mobile) -->
+                <div class="d-lg-none mb-4">
+                    <button class="btn btn-outline-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#orderSummaryMobile">
+                        Show Order Summary <i class="fas fa-chevron-down ms-2"></i>
+                    </button>
+                    <div class="collapse" id="orderSummaryMobile">
+                        <div class="card mt-2">
+                            <div class="card-body">
+                                <h6 class="card-title mb-3">Order Summary</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Order Summary (Desktop) -->
+            <div class="col-lg-4 d-none d-lg-block py-5">
+                <div class="summary-card py-5">
+                    <h5 class="mb-4">Order Summary</h5>
+                        <div class="d-flex justify-content-between fw-bold fs-5">
+                            <span>Total</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Style Hub</h5>
+                    <p>Your one-stop destination for the latest fashion and electronics. Quality products at affordable prices.</p>
+                    <div class="social-links">
+                        <a href="facebook.com" class="text-dark me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="twitter.com" class="text-dark me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="instagram.com" class="text-dark me-2"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6>Shop</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="Category/Men.html" class="text-muted text-decoration-none">Men's Fashion</a></li>
+                        <li><a href="Category/Women.html" class="text-muted text-decoration-none">Women's Fashion</a></li>
+                        <li><a href="Category/Electronics.html" class="text-muted text-decoration-none">Electronics</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6>Help</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-muted text-decoration-none">About us</a></li>
+                        <li><a href="customer-service.html" class="text-muted text-decoration-none">Customer Service</a></li>
+                        <li><a href="faq.html" class="text-muted text-decoration-none">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 ms-lg-auto">
+                    <div class="ms-lg-4">
+                        <h6>Newsletter</h6>
+                        <p class="text-muted">Subscribe for updates and offers</p>
+                        <form class="mt-3">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Your email">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            <div class="row mt-4 pt-3 border-top">
+                <div class="col-12 text-center">
+                    <p class="mb-0 text-muted">&copy; 2025 Style Hub. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        </footer>
+                     
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

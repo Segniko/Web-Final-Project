@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - StyleHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="admin-navbar">
+        <div class="navbar-brand">StyleHub Admin</div>
+        <div class="navbar-actions">
+            <a href="../home.html" id="logoutBtn" class="btn btn-outline">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="admin-container">
+        <header class="page-header">
+            <h1>Product Management</h1>
+            <button class="btn btn-primary" id="addProductBtn">
+                <i class="fas fa-plus"></i> Add New Product
+            </button>
+        </header>
+            <div class="content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Products</h3>
+                        <button class="btn btn-primary" id="newProductBtn">
+                            <i class="fas fa-plus"></i> New Product
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="productsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Rate</th>
+                                        <th>Price</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTableBody">
+                                    <!-- Products will be loaded here via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Product Modal -->
+            <div id="productModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Add New Product</h3>
+                        <button class="close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="productForm">
+                            <div class="form-group">
+                                <label for="productName">Product Name</label>
+                                <input type="text" id="productName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productCategory">Category</label>
+                                <select id="productCategory" class="form-control" required>
+                                    <option value="">Select a category</option>
+                                    <option value="men">Men</option>
+                                    <option value="women">Women</option>
+                                    <option value="neutral">Neutral</option>
+                                    <option value="electronics">Electronics</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="productRate">Rate (1-5)</label>
+                                <input type="number" id="productRate" class="form-control" min="1" max="5" step="0.5" value="1" required>
+                                <small class="text-muted">Rate from 1 to 5</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="productPrice">Price</label>
+                                <input type="number" id="productPrice" class="form-control" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productImage">Product Image</label>
+                                <input type="file" id="productImage" class="form-control" accept="image/*">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline" id="cancelBtn">Cancel</button>
+                        <button type="submit" form="productForm" class="btn btn-primary">Save Product</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-content">
+                    <i class="fas fa-tag modal-icon"></i>
+                    <div>
+                        <h3 id="modalTitle">Add New Product</h3>
+                        <p class="modal-subtitle">Fill in the product details below</p>
+                    </div>
+                </div>
+                <button class="close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm" class="product-form">
+                    <input type="hidden" id="productId">
+                    
+                    <div class="form-section">
+                        <h4 class="section-title">
+                            <i class="fas fa-info-circle"></i> Basic Information
+                        </h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productName">Product Name <span class="required">*</span></label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-box"></i>
+                                    <input type="text" id="productName" class="form-control" placeholder="Enter product name" required>
+                                </div>
+                                <div class="form-hint">A descriptive name for your product</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="productCategory">Category <span class="required">*</span></label>
+                                <div class="select-wrapper">
+                                    <i class="fas fa-tags"></i>
+                                    <select id="productCategory" class="form-control" required>
+                                        <option value="" disabled selected>Select a category</option>
+                                        <option value="clothing">Clothing</option>
+                                        <option value="shoes">Shoes</option>
+                                        <option value="accessories">Accessories</option>
+                                        <option value="jewelry">Jewelry</option>
+                                        <option value="bags">Bags</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down select-arrow"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="productDescription">Description <span class="required">*</span></label>
+                            <div class="textarea-wrapper">
+                                <i class="fas fa-align-left"></i>
+                                <textarea id="productDescription" class="form-control" rows="3" placeholder="Enter product description" required></textarea>
+                            </div>
+                            <div class="form-hint">Describe the product in detail</div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4 class="section-title">
+                            <i class="fas fa-dollar-sign"></i> Pricing & Stock
+                        </h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productPrice">Price ($) <span class="required">*</span></label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-tag"></i>
+                                    <input type="number" id="productPrice" class="form-control" min="0" step="0.01" placeholder="0.00" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="productStock">Stock Quantity <span class="required">*</span></label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-boxes"></i>
+                                    <input type="number" id="productStock" class="form-control" min="0" placeholder="0" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productSku">SKU</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-barcode"></i>
+                                    <input type="text" id="productSku" class="form-control" placeholder="e.g. PROD-123">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="productWeight">Weight (kg)</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-weight"></i>
+                                    <input type="number" id="productWeight" class="form-control" min="0" step="0.1" placeholder="0.0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4 class="section-title">
+                            <i class="fas fa-image"></i> Product Images
+                        </h4>
+                        <div class="form-group">
+                            <label for="productImage">Main Product Image <span class="required">*</span></label>
+                            <div class="file-upload">
+                                <input type="file" id="productImage" class="file-input" accept="image/*" required>
+                                <label for="productImage" class="file-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Click to upload or drag and drop</span>
+                                    <span class="file-format">PNG, JPG, JPEG (max 5MB)</span>
+                                </label>
+                            </div>
+                            <div class="image-preview" id="imagePreview">
+                                <img src="" alt="Image Preview" class="image-preview__image">
+                                <div class="image-preview__default">
+                                    <i class="fas fa-image"></i>
+                                    <span>Image Preview</span>
+                                </div>
+                                <button type="button" class="remove-image" title="Remove image">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Additional Images</label>
+                            <div class="additional-images">
+                                <div class="image-upload-placeholder" id="addMoreImages">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add more images</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelBtn">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Product
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+     //Js link to be placed here     
+    </script>
+</body>
+</html>

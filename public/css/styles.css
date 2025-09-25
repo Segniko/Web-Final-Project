@@ -1,0 +1,516 @@
+/* Global Styles */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    padding-top: 56px; /* Space for fixed navbar */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a1a2e !important;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar .btn-outline-light {
+    color: #1a1a2e;
+    border-color: #1a1a2e;
+}
+
+.navbar .btn-outline-light:hover {
+    background-color: #1a1a2e;
+    color: #fff;
+}
+
+.navbar .btn-primary {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.navbar .btn-primary:hover {
+    background-color: #4338ca;
+    border-color: #4338ca;
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 0;
+    margin: 4rem 0;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.cta-section h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+    line-height: 1.3;
+}
+
+.cta-section .btn {
+    background: white;
+    color: #4f46e5;
+    border: none;
+    padding: 0.8rem 2.5rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-section .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.cta-section .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section .btn:hover::before {
+    width: 100%;
+}
+.cta-section .btn i {
+    transition: transform 0.3s ease;
+    margin-left: 5px;
+}
+
+.cta-section .btn:hover i {
+    transform: translateX(3px);
+}
+
+@media (max-width: 767.98px) {
+    .cta-section h3 {
+        font-size: 1.75rem;
+    }
+    
+    .cta-section .btn {
+        padding: 0.75rem 2rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 70vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 2rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: -1rem;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.hero-section h1 {
+    font-weight: 900;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    color: #e2e8f0;
+    margin-bottom: 2.5rem;
+    max-width: 90%;
+    line-height: 1.7;
+}
+
+.hero-image-container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+    transition: transform 0.5s ease;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.hero-badge {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.hero-badge .badge {
+    background: linear-gradient(45deg, #4f46e5, #8b5cf6) !important;
+    border: none;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.hero-badge h5 {
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.hero-badge small {
+    font-size: 0.7rem;
+    opacity: 0.9;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.hero-section .btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero-section .btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: -1;
+    transition: transform 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+.hero-section .btn:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.hero-section .btn-outline-light:hover {
+    color: #1a1a2e !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .hero-section {
+        text-align: center;
+        padding: 6rem 0 4rem;
+    }
+    
+    .hero-section p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-section .btn {
+        margin: 0.5rem;
+    }
+    
+    .hero-image-wrapper {
+        margin-top: 3rem;
+        transform: none;
+    }
+    
+    .hero-badge {
+        right: 20px;
+    }
+}
+
+/* Category Cards */
+.category-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.category-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Product Cards */
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-card .card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
+.product-card .card-body {
+    padding: 1.5rem;
+}
+
+.product-card .card-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.badge {
+    font-weight: 500;
+    padding: 0.4em 0.8em;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://via.placeholder.com/1920x400') center/cover no-repeat;
+    padding: 5rem 0;
+    color: white;
+}
+
+.newsletter-section h3 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.newsletter-section p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+footer h5, footer h6 {
+    color: var(--dark-color);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #333;
+    margin-right: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        padding: 4rem 0;
+    }
+    
+    .hero-section img {
+        margin-top: 2rem;
+    }
+    
+    .category-card, .product-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    footer .text-md-end {
+        text-align: left !important;
+        margin-top: 1.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Utility Classes */
+.section-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    bottom: -10px;
+    left: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0b5ed7;
+}
