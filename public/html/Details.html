@@ -121,6 +121,22 @@
             
             .search-bar {
                 margin-top: 1rem;
+                max-width: 100% !important;
+            }
+
+            /* Make header columns stack and allow search to fill width */
+            .main-header .row {
+                align-items: center;
+            }
+
+            .main-header .col, .main-header .col-auto {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            .main-header .col-auto .d-flex {
+                justify-content: flex-end;
             }
         }
     </style>
