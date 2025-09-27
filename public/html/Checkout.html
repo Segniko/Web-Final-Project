@@ -181,13 +181,9 @@
                     <div class="d-flex w-100">
                         <div class="d-flex align-items-center gap-3 me-auto">
                             <div class="dropdown language-dropdown">
-                                <a class="btn btn-sm btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <span class="btn btn-sm btn-outline-secondary">
                                     <i class="fas fa-globe me-1"></i> EN
-                                </a>
-                                <ul class="dropdown-menu language-menu">
-                                    <li><a class="dropdown-item" href="#">English</a></li>
-                                    <li><a class="dropdown-item" href="#">አማርኛ</a></li>
-                                </ul>
+                                </span>
                             </div>
                             <a href="#" class="btn btn-outline-dark position-relative">
                                 <i class="fas fa-shopping-cart"></i>
@@ -234,13 +230,43 @@
         </div>
     </nav>
 
-    <div class="checkout-container">
-        <div class="row">
-            <!-- Left Column - Checkout Form -->
-            <div class="col-lg-8">
-                <div class="mb-4">
+    <div class="checkout-container py-3">
+        <div class="row align-items-start">
+            <!-- Order Summary - Moved to top right -->
+            <div class="col-lg-4 order-lg-2 mb-4">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Order Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal</span>
+                                <span id="subtotal">$0.00</span>
+                            </div>
+                        <div class="d-flex justify-content-between mb-2 text-success">
+                            <span>Shipping</span>
+                            <span id="shipping">$5.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Tax (10%)</span>
+                            <span id="tax">$0.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between fw-bold fs-5 border-top pt-3">
+                            <span>Total</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                        <button type="submit" form="checkoutForm" class="btn btn-primary w-100 mt-3 py-3">
+                            Complete Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checkout Form - Takes remaining space -->
+            <div class="col-lg-8 order-lg-1">
+                        <form id="checkoutForm" class="mb-4">
                     <h4 class="mb-4 py-3">Shipping Information</h4>
-                    <form id="shippingForm">
+                            <form id="shippingForm">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName" class="form-label">First Name</label>
@@ -279,39 +305,48 @@
                                 <option value="Other">Other</option>
                             </select>
                         </div>
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" id="saveAddress">
-                            <label class="form-check-label" for="saveAddress">
-                                Save this information for next time
-                            </label>
+                        <!-- Payment method selection -->
+                        <div class="mb-3">
+                            <label class="form-label">Payment Method</label>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <label class="payment-method d-flex align-items-center" for="pm_credit">
+                                    <input type="radio" name="paymentMethod" id="pm_credit" value="credit_card" checked class="me-2">
+                                    <div>
+                                        <div class="fw-bold">Credit / Debit Card</div>
+                                        <small class="text-muted">Secure card payment</small>
+                                    </div>
+                                </label>
+
+                                <label class="payment-method d-flex align-items-center" for="pm_paypal">
+                                    <input type="radio" name="paymentMethod" id="pm_paypal" value="paypal" class="me-2">
+                                    <div>
+                                        <div class="fw-bold">PayPal</div>
+                                        <small class="text-muted">Use your PayPal account</small>
+                                    </div>
+                                </label>
+
+                                <label class="payment-method d-flex align-items-center" for="pm_cod">
+                                    <input type="radio" name="paymentMethod" id="pm_cod" value="cod" class="me-2">
+                                    <div>
+                                        <div class="fw-bold">Cash on Delivery</div>
+                                        <small class="text-muted">Pay when you receive the order</small>
+                                    </div>
+                                </label>
+                            </div>
                         </div>
                     </form>
                 </div>
 
-                <!-- Order Summary (Collapsible on mobile) -->
-                <div class="d-lg-none mb-4">
-                    <button class="btn btn-outline-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#orderSummaryMobile">
-                        Show Order Summary <i class="fas fa-chevron-down ms-2"></i>
-                    </button>
-                    <div class="collapse" id="orderSummaryMobile">
-                        <div class="card mt-2">
-                            <div class="card-body">
-                                <h6 class="card-title mb-3">Order Summary</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
 
-            <!-- Right Column - Order Summary (Desktop) -->
-            <div class="col-lg-4 d-none d-lg-block py-5">
-                <div class="summary-card py-5">
-                    <h5 class="mb-4">Order Summary</h5>
-                        <div class="d-flex justify-content-between fw-bold fs-5">
-                            <span>Total</span>
-                        </div>
-                    </div>
-                </div>
+            <!-- Render cart items above the form (if any) -->
+            <div class="container mt-4">
+                <div class="checkout-items"></div>
+            </div>
+
+        </div>
+    </div>
             </div>
         </div>
     </div>
@@ -366,10 +401,54 @@
             </div>
         </div>
         </footer>
-                     
+                
     <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/cart.js"></script>
+    <script>
+        // Payment method UI toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const labels = document.querySelectorAll('label.payment-method');
+            labels.forEach(label => {
+                const input = label.querySelector('input[name="paymentMethod"]');
+                if (!input) return;
+                // reflect initial state
+                if (input.checked) label.classList.add('active');
+                input.addEventListener('change', () => {
+                    labels.forEach(l => l.classList.remove('active'));
+                    if (input.checked) label.classList.add('active');
+                });
+                // allow clicking the label to toggle selection
+                label.addEventListener('click', () => { input.checked = true; input.dispatchEvent(new Event('change')); });
+            });
+        });
+    </script>
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Get price values from URL or use 0 as default
+        const price = parseFloat(urlParams.get('price')) || 0;
+        const shipping = parseFloat(urlParams.get('shipping')) || 5.00;
+        const tax = parseFloat(urlParams.get('tax')) || (price * 0.1).toFixed(2);
+        const total = parseFloat(urlParams.get('total')) || (price + shipping + parseFloat(tax)).toFixed(2);
+        
+        // Update the DOM with the calculated values
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update order summary
+            const subtotalElement = document.getElementById('subtotal');
+            const shippingElement = document.getElementById('shipping');
+            const taxElement = document.getElementById('tax');
+            const totalElement = document.getElementById('total');
+            
+            if (subtotalElement) subtotalElement.textContent = `$${price.toFixed(2)}`;
+            if (shippingElement) shippingElement.textContent = `$${shipping.toFixed(2)}`;
+            if (taxElement) taxElement.textContent = `$${parseFloat(tax).toFixed(2)}`;
+            if (totalElement) totalElement.textContent = `$${parseFloat(total).toFixed(2)}`;
+        });
+        
+        // Checkout submission is handled in /js/checkout.js which includes email in the payload.
+    </script>
+    <script src="/js/checkout.js"></script>
 </body>
 </html>

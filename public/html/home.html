@@ -151,26 +151,23 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-auto">
+                <div class="col-auto px-15">
                     <div class="d-flex w-100">
                         <div class="d-flex align-items-center gap-3 me-auto">
                             <div class="dropdown language-dropdown">
-                                <a class="btn btn-sm btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <span class="btn btn-sm btn-outline-secondary">
                                     <i class="fas fa-globe me-1"></i> EN
-                                </a>
-                                <ul class="dropdown-menu language-menu">
-                                    <li><a class="dropdown-item" href="#">English</a></li>
-                                    <li><a class="dropdown-item" href="#">አማርኛ</a></li>
-                                </ul>
-                            </div>
-                            <a href="#" class="btn btn-outline-dark position-relative">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    0
                                 </span>
+                            </div>
+                            <a href="/checkout" class="btn btn-outline-dark position-relative btn-add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-counter position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" 
+                                    style="display: none;">0</span>
                             </a>
                         </div>
-                        <a href="Admin/dashboard.html" class="btn btn-outline-primary btn-sm ms-2">Admin Login</a>
+                        <div class="px-2 ms-2">
+                        <a href="/admin/login" class="btn btn-outline-primary btn-sm ms-2 px-3">Admin Login</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -199,9 +196,9 @@
                             Categories
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="Category/Men.html">Men's Fashion</a></li>
-                            <li><a class="dropdown-item" href="Category/Women.html">Women's Fashion</a></li>
-                            <li><a class="dropdown-item" href="Category/Electronics.html">Electronics</a></li>
+                            <li><a class="dropdown-item" href="category/Men.html">Men's Fashion</a></li>
+                            <li><a class="dropdown-item" href="category/Women.html">Women's Fashion</a></li>
+                            <li><a class="dropdown-item" href="category/Electronics.html">Electronics</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -213,355 +210,32 @@
     <main class="py-4">
         <div class="container">
             <!-- All Products -->
-            <section class="mb-5">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="section-title mb-0">Our Products</h2>
-                    <div class="d-flex gap-2">
-                        <select class="form-select form-select-sm" style="width: auto;">
-                            <option selected>Sort by</option>
-                            <option value="price-asc">Price: Low to High</option>
-                            <option value="price-desc">Price: High to Low</option>
-                            <option value="newest">Newest Arrivals</option>
-                            <option value="popular">Most Popular</option>
-                        </select>
-                        <a href="#" class="btn btn-outline-primary btn-sm">View All</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- Product 1 -->
-                    <div class="col-md-3 col-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Product+1" class="card-img-top" alt="Product 1">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="text-muted small">(24)</span>
-                                </div>
-                                <h5 class="card-title">Wireless Earbuds</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="product-price">$79.99</span>
-                                        <small class="text-decoration-line-through text-muted ms-2">$99.99</small>
-                                    </div>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 2 -->
-                    <div class="col-md-3 col-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Product+2" class="card-img-top" alt="Product 2">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span class="text-muted small">(42)</span>
-                                </div>
-                                <h5 class="card-title">Smart Watch Pro</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$199.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 3 -->
-                    <div class="col-md-3 col-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Product+3" class="card-img-top" alt="Product 3">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="text-muted small">(15)</span>
-                                </div>
-                                <h5 class="card-title">Bluetooth Speaker</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$49.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 4 -->
-                    <div class="col-md-3 col-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Product+4" class="card-img-top" alt="Product 4">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="text-muted small">(8)</span>
-                                </div>
-                                <h5 class="card-title">Wireless Charger</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="product-price">$29.99</span>
-                                        <small class="text-decoration-line-through text-muted ms-2">$39.99</small>
-                                    </div>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="section-title mb-0" style="font-size: 1.5rem;">All Products</h2>
+            </div>
+            <section class="mb-4 py-5">    
+                <div class="row g-2" id="all-products-container">
+                    <!-- Products will be loaded here dynamically by home-products.js -->
                 </div>
             </section>
 
             <!-- New Arrivals -->
-            <section id="new-arrivals" class="mb-5 pt-5">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="section-title mb-0">New Arrivals</h2>
-                    <a href="#" class="btn btn-outline-primary btn-sm">View All</a>
+            <section id="new-arrivals" class="mb-4 pt-3">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="section-title mb-0" style="font-size: 1.5rem;">New Arrivals</h2>
                 </div>
-                <div class="row g-3">
-                    <!-- New Arrival 1 -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Wireless+Earbuds+Pro" class="card-img-top" alt="Wireless Earbuds Pro">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="text-muted small">(42)</span>
-                                </div>
-                                <h5 class="card-title">Wireless Earbuds Pro</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$129.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- New Arrival 2 -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Smart+Watch+4" class="card-img-top" alt="Smart Watch 4">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span class="text-muted small">(37)</span>
-                                </div>
-                                <h5 class="card-title">Smart Watch 4</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$199.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- New Arrival 3 -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Summer+Dress" class="card-img-top" alt="Summer Dress">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="text-muted small">(28)</span>
-                                </div>
-                                <h5 class="card-title">Summer Floral Dress</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$45.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- New Arrival 4 -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Running+Shoes" class="card-img-top" alt="Running Shoes">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="text-muted small">(12)</span>
-                                </div>
-                                <h5 class="card-title">Smartphone X</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$899.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- More new arrival products... -->
+                <div class="row g-2" id="new-arrivals-container">
+                    <!-- New Arrivals will be loaded here dynamically by home-products.js -->
                 </div>
             </section>
 
-            <!-- Featured Products -->
-            <section id="featured-products" class="mb-5 pt-5">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="section-title mb-0">Best Sellers</h2>
-                    <a href="#" class="btn btn-outline-primary btn-sm">View All</a>
+            <!-- Best Sellers -->
+            <section id="featured-products" class="mb-4 pt-3">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="section-title mb-0" style="font-size: 1.5rem;">Best Sellers</h2>
                 </div>
-                <div class="row g-3">
-                    <!-- Bestseller 1 -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Wireless+Headphones" class="card-img-top" alt="Wireless Headphones">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span class="text-muted small">(156)</span>
-                                </div>
-                                <h5 class="card-title">Wireless Headphones</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$129.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Bestseller 2 -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Denim+Jacket" class="card-img-top" alt="Denim Jacket">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="text-muted small">(89)</span>
-                                </div>
-                                <h5 class="card-title">Classic Denim Jacket</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$69.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Bestseller 3 -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Smartphone+12" class="card-img-top" alt="Smartphone 12">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="text-muted small">(243)</span>
-                                </div>
-                                <h5 class="card-title">Smartphone 12 Pro</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$999.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Bestseller 4 -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                        <div class="product-card h-100">
-                            <div class="position-relative">
-                                <img src="https://via.placeholder.com/300x300?text=Leather+Wallet" class="card-img-top" alt="Leather Wallet">
-                            </div>
-                            <div class="card-body">
-                                <div class="product-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span class="text-muted small">(156)</span>
-                                </div>
-                                <h5 class="card-title">Noise Cancelling Headphones</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$149.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- More bestseller products... -->
+                <div class="row g-2" id="featured-products-container">
+                    <!-- Best Sellers will be loaded here dynamically by home-products.js -->
                 </div>
             </section>
         </div>
@@ -590,9 +264,9 @@
             <div class="col-lg-2 col-md-4">
                 <h6>Help</h6>
                 <ul class="list-unstyled">
-                    <li><a href="about.html" class="text-muted text-decoration-none">About us</a></li>
-                    <li><a href="customer-service.html" class="text-muted text-decoration-none">Customer Service</a></li>
-                    <li><a href="faq.html" class="text-muted text-decoration-none">FAQs</a></li>
+                    <li><a href="/about" class="text-muted text-decoration-none">About us</a></li>
+                    <li><a href="/service" class="text-muted text-decoration-none">Customer Service</a></li>
+                    <li><a href="/faq" class="text-muted text-decoration-none">FAQs</a></li>
                 </ul>
             </div>
             <div class="col-lg-4 col-md-4 ms-lg-auto">
@@ -619,10 +293,10 @@
     
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
-    <script> 
-        //Script to be placed here
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="/js/cart.js"></script>
+    <script src="../js/home-products.js"></script>
 </body>
 </html>

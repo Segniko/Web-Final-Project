@@ -9,7 +9,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="/CSS/styles.css">
     <style>
         body {
             margin: 0;
@@ -88,32 +88,14 @@
                     <div class="d-flex w-100">
                         <div class="d-flex align-items-center gap-3 me-auto">
                             <div class="dropdown language-dropdown">
-                                <a class="btn btn-sm btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <span class="btn btn-sm btn-outline-secondary">
                                     <i class="fas fa-globe me-1"></i> EN
-                                </a>
-                                <ul class="dropdown-menu language-menu">
-                                    <li><a class="dropdown-item" href="#">English</a></li>
-                                    <li><a class="dropdown-item" href="#">አማርኛ</a></li>
-                                </ul>
-                            </div>
-                            <a href="#" class="btn btn-outline-dark position-relative">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    0
                                 </span>
+                            </div>
+                            <a href="/checkout" class="btn btn-outline-dark position-relative btn-add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-counter position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none;">0</span>
                             </a>
-                        </div>
-                        <div class="dropdown user-dropdown ms-3">
-                            <a href="#" class="btn btn-outline-secondary" data-bs-toggle="dropdown">
-                                <i class="fas fa-user"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end user-menu">
-                                <li><a class="dropdown-item" href="Profile.html"><i class="fas fa-user me-2"></i>My Account</a></li>
-                                <li><a class="dropdown-item" href="Profile.html"><i class="fas fa-box me-2"></i>Orders</a></li>
-                                <li><a class="dropdown-item" href="Profile.html"><i class="fas fa-heart me-2"></i>Wishlist</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="Auth/login.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -154,7 +136,7 @@
     </nav>
 
     <!-- Category Header -->
-    <header class="category-header text-center">
+    <header class="category-header text-center py-5">
         <div class="container">
             <h1 class="display-4 fw-bold">Electronics</h1>
             <p class="lead">Discover the latest gadgets and electronic devices</p>
@@ -162,22 +144,13 @@
     </header>
 
     <!-- Products Grid -->
-    <div class="container py-5 mt-5">
-        <div class="row">
-            <!-- Product 1 -->
-            <div class="col-md-4 col-sm-6">
-                <div class="card product-card h-100">
-                    <img src="https://via.placeholder.com/300x300" class="card-img-top product-img" alt="Smartphone">
-                    <div class="card-body">
-                        <h5 class="card-title">Smartphone X</h5>
-                        <p class="card-text">$699.99</p>
-                        <a href="#" class="btn btn-outline-primary w-100">Add to Cart</a>
-                    </div>
-                </div>
+    <section class="py-4">
+        <div class="container">
+            <div class="row g-4" id="products-container">
+                <!-- Products will be loaded here by home-products.js -->
             </div>
-            <!-- Add more products as needed -->
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-light py-5">
@@ -230,7 +203,21 @@
     </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- Products Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row" id="category-products-container">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="/js/cart.js"></script>
+    <script src="/js/home-products.js"></script>
 </body>
 </html>

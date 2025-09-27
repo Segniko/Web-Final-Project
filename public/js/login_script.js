@@ -17,7 +17,7 @@ document.getElementById("login").addEventListener("click", async (e) => {
         console.log(data);
 
         if (response.ok) {
-            window.location.href = "/home";
+            window.location.href = "/admin/dashboard";
         } else {
             alert(`${data.message}`);
         }
