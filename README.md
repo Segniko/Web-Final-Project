@@ -110,16 +110,16 @@ Web-Final-Project
 ```
 
 # Images
-1. Home Page
+**1. Home Page**
 <img width="936" height="645" alt="image" src="https://github.com/user-attachments/assets/dcd53568-784c-4ae4-a7f1-3070f9eb40fa" />
 
-2.Details Page
+**2.Details Page**
 <img width="938" height="642" alt="image" src="https://github.com/user-attachments/assets/0a46b7d2-c063-4c25-b66b-f6070a3f94b0" />
 
-3.Checkout Page
+**3.Checkout Page**
 <img width="940" height="646" alt="image" src="https://github.com/user-attachments/assets/e1507ff3-18fc-4495-b068-9368988e2151" />
 
-4. Category/Men
+**4. Category/Men**
 <img width="946" height="647" alt="image" src="https://github.com/user-attachments/assets/419a7a40-dc06-40c9-b44d-938aa200fea3" />
 
 
