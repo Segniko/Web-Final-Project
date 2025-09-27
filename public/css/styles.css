@@ -10,10 +10,21 @@
     --info-color: #0dcaf0;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     padding-top: 56px; /* Space for fixed navbar */
+}
+
+main {
+    flex: 1 0 auto; /* allow main content to grow and push footer to bottom */
 }
 
 /* Navbar Styles */
@@ -514,4 +525,3 @@ footer a:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #0b5ed7;
 }
-
