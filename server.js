@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public'), {
     redirect: false
 }));
 
-// Add a specific route for any path ending with .html (Express 5 compatible)
+// Add a specific route for any path ending with .html 
 // This supports case-insensitive requests like /FAQ.html or nested paths like /Admin/login.html
 app.get(/.*\.html$/i, (req, res, next) => {
     const fs = require('fs');
