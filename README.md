@@ -1,6 +1,6 @@
 # Project Description
 
-Style Hub is a modern full-stack modern E-commerce website that allows the user to shop for products online and make purchases. It will have categories for men, women, and electronics. The overall Page structure looks like this:
+Style Hub is a modern full-stack modern E-commerce website that allows the user to shop for products online and make purchases. It will have categories for men, women, and electronics. The overall Page structure and Tech Stack looks like this:
 
 # Tech Stack
 - HTML, CSS, Javascript, Node/Express.js, PostgreSQL, Bootstrap
@@ -123,14 +123,25 @@ Web-Final-Project
 <img width="946" height="647" alt="image" src="https://github.com/user-attachments/assets/419a7a40-dc06-40c9-b44d-938aa200fea3" />
 
 
+# Preview of Pages
+**1. Home Page**
+<img width="1364" height="593" alt="image" src="https://github.com/user-attachments/assets/8ce25fad-9bc1-47c9-ad7f-ba2498d0c53a" />
+
+**2. Details Page**
+<img width="1365" height="598" alt="image" src="https://github.com/user-attachments/assets/c4aed4a2-a3a3-4a41-bd90-d0a2e23fda40" />
+
+**3. Checkout Page**
+<img width="1365" height="595" alt="image" src="https://github.com/user-attachments/assets/51995675-fb03-4239-b11c-ab70c6542a01" />
+
+**4. Admin Dashboard**
+<img width="1365" height="596" alt="image" src="https://github.com/user-attachments/assets/2ba9f93e-f4c8-43fe-acd9-65dc31981e45" />
+
 # Installation
 
 1. Clone the repository
 2. Install dependencies
   - npm install
-3. Set up the database
-  - npm run db:setup
-4. Run the server
+3. Run the server
   - npm run dev / node server.js
 
 # Usage
