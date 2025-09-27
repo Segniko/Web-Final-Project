@@ -142,7 +142,7 @@ Web-Final-Project
 2. Install dependencies
   - npm install
 3. Run the server
-  - npm run dev / node server.js
+  - npm run dev or node server.js
 
 # Usage
 
