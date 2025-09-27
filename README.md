@@ -42,7 +42,8 @@ Style Hub is a modern full-stack modern E-commerce website that allows the user 
 
 # Project Structure
 
-STYLEHUB-master/
+```
+Web-Final-Project
 │
 ├── config/
 │   └── db.js
@@ -91,3 +92,4 @@ STYLEHUB-master/
 ├── package-lock.json
 ├── README.md
 └── server.js
+```
