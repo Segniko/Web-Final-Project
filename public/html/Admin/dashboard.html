@@ -126,6 +126,7 @@
                         <th>Category</th>
                         <th>Rate</th>
                         <th>Price</th>
+                        <th>Description</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -167,6 +168,10 @@
                 <input type="number" id="productPrice" class="form-control" min="0" step="0.01" required>
             </div>
             <div class="form-group">
+                <label>Description</label>
+                <textarea id="productDescription" class="form-control" rows="3" placeholder="Short product description"></textarea>
+            </div>
+            <div class="form-group">
                 <label>Image</label>
                 <input type="file" id="productImage" class="form-control" accept="image/*">
             </div>
@@ -205,6 +210,7 @@
                     <td>${product.category}</td>
                     <td>${product.rate}</td>
                     <td>$${product.price}</td>
+                    <td>${product.description ? product.description : ''}</td>
                     <td>
                         <button class="btn btn-sm btn-primary editBtn" data-id="${product.id}">Edit</button>
                         <button class="btn btn-sm btn-danger deleteBtn" data-id="${product.id}">Delete</button>
@@ -245,6 +251,7 @@
             const category = document.getElementById("productCategory").value;
             const rate = document.getElementById("productRate").value;
             const price = document.getElementById("productPrice").value;
+            const description = document.getElementById("productDescription").value;
             const fileInput = document.getElementById('productImage');
 
             // helper to read file as base64
@@ -260,7 +267,7 @@
             try {
                 if (editingProductId) {
                     // Edit — include image if selected
-                    const productData = { name, category, rate, price };
+                    const productData = { name, category, rate, price, description };
                     if (fileInput.files && fileInput.files[0]) {
                         const file = fileInput.files[0];
                         const base64 = await fileToBase64(file);
@@ -274,7 +281,7 @@
                     });
                 } else {
                     // Add
-                    const payload = { name, category, rate, price };
+                    const payload = { name, category, rate, price, description };
                     if (fileInput.files && fileInput.files[0]) {
                         const file = fileInput.files[0];
                         const base64 = await fileToBase64(file);
@@ -308,6 +315,7 @@
                 document.getElementById("productCategory").value = product.category;
                 document.getElementById("productRate").value = product.rate;
                 document.getElementById("productPrice").value = product.price;
+                document.getElementById("productDescription").value = product.description || '';
                 modal.style.display = "flex";
             } catch(err) {
                 console.error(err);

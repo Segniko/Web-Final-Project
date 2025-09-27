@@ -16,7 +16,7 @@ async function getProductsController(req, res) {
 // ADD new product
 async function addProductController(req, res) {
     try {
-        const { name, category, rate, price, imageBase64, imageFilename, description } = req.body || {};
+    const { name, category, rate, price, imageBase64, imageFilename, description } = req.body || {};
 
         // Basic validation
         if (!name || !category || !price) {
@@ -24,7 +24,7 @@ async function addProductController(req, res) {
         }
 
         // Create the product with image_url null (we'll update after writing the file)
-        const created = await createProduct({ name, category, rate, price, image_url: null, description });
+    const created = await createProduct({ name, category, rate, price, image_url: null, description });
 
         // If there's no image payload, return created product
         if (!imageBase64 || !imageFilename) {
@@ -46,7 +46,8 @@ async function addProductController(req, res) {
             category: created.category,
             rate: created.rate,
             price: created.price,
-            image_url: `/images/${created.id}${ext}`
+            image_url: `/images/${created.id}${ext}`,
+            description: created.description
         });
 
         return res.status(201).json(updated);
@@ -60,7 +61,7 @@ async function addProductController(req, res) {
 async function editProductController(req, res) {
     try {
         const id = req.params.id;
-        const { imageBase64, imageFilename } = req.body || {};
+    const { imageBase64, imageFilename, description } = req.body || {};
 
         const existing = await getProductById(id);
         if (!existing) return res.status(404).json({ message: 'Product not found' });
@@ -86,7 +87,7 @@ async function editProductController(req, res) {
             await fsp.writeFile(destPath, Buffer.from(base64Data, 'base64'));
 
             // Build payload for update; remove imageBase64/imageFilename
-            const payload = Object.assign({}, req.body, { image_url: `/images/${id}${ext}` });
+            const payload = Object.assign({}, req.body, { image_url: `/images/${id}${ext}`, description });
             delete payload.imageBase64;
             delete payload.imageFilename;
 

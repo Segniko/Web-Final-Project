@@ -14,7 +14,7 @@ async function getProductById(id) {
 
 // Add a new product
 async function createProduct(product) {
-    const { name, category, rate, price, image_url } = product;
+    const { name, category, rate, price, image_url, description } = product;
     const client = await pool.connect();
     try {
         await client.query('BEGIN');
@@ -24,9 +24,9 @@ async function createProduct(product) {
         const nextId = Number(maxRes.rows[0].max_id) + 1;
 
         const insertRes = await client.query(
-            `INSERT INTO products (id, name, category, rate, price, image_url) 
-             VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
-            [nextId, name, category, rate, price, image_url]
+            `INSERT INTO products (id, name, category, rate, price, image_url, description) 
+             VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+            [nextId, name, category, rate, price, image_url, description]
         );
 
         // Ensure the sequence backing the serial column is in sync
@@ -55,12 +55,12 @@ async function deleteProduct(id) {
 
 // Update product
 async function updateProduct(id, product) {
-    const { name, category, rate, price, image_url } = product;
+    const { name, category, rate, price, image_url, description } = product;
     const result = await pool.query(
         `UPDATE products 
-        SET name = $1, category = $2, rate = $3, price = $4, image_url = $5
-         WHERE id = $6 RETURNING *`,
-        [name, category, rate, price, image_url, id]
+        SET name = $1, category = $2, rate = $3, price = $4, image_url = $5, description = $6
+         WHERE id = $7 RETURNING *`,
+        [name, category, rate, price, image_url, description, id]
     );
     return result.rows[0] || null;
 }
