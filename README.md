@@ -28,8 +28,6 @@ Style Hub is a modern full-stack modern E-commerce website that allows the user 
 4. **Details Page**
    * Product Details
    * Add to Cart
-   * Buy Now
-   * Other related product items
    * Footer
 
 5. **Checkout Page**
@@ -45,51 +43,84 @@ Style Hub is a modern full-stack modern E-commerce website that allows the user 
 ```
 Web-Final-Project
 │
-├── config/
-│   └── db.js
+├── config/                    # Configuration files
+│   └── db.js                 # Database configuration
 │
-├── public/
-│   ├── css/
-│   │   ├── admin.css
-│   │   └── styles.css
-│   │
-│   ├── html/
-│   │   ├── Admin/
-│   │   ├── Category/
-│   │   ├── about.html
-│   │   ├── Checkout.html
-│   │   ├── customer-service.html
-│   │   ├── Details.html
-│   │   ├── faq.html
-│   │   ├── home.html
-│   │   ├── Landing.html
-│   │   ├── privacy.html
-│   │   └── terms.html
-│   │
-│   └── js/
-│       ├── login_script.js
-│       └── logout_script.js
+├── database/                 
+│   └── Schema.sql            # Database schema and migrations
 │
-├── src/
-│   ├── controllers/
-│   │   └── authController.js
-│   │
-│   ├── middlewares/
-│   │   └── authMiddleware.js
-│   │
-│   ├── models/
-│   │   └── userModel.js
-│   │
-│   ├── routes/
-│   │   └── authRoutes.js
-│   │
-│   └── services/
-│       ├── authService.js
-│       └── sessionStore.js
+├── node_modules/             # Node.js dependencies
 │
-├── .gitignore
-├── package.json
-├── package-lock.json
-├── README.md
-└── server.js
+├── public/                  
+│   ├── css/                  
+│   │   ├── admin.css         
+│   │   └── styles.css        
+│   │
+│   ├── html/                 
+│   │   ├── Admin/            # Admin panel pages
+│   │   │   └── dashboard.html    
+│   │   │   └── login.html        
+│   │   ├── Category/         # Category pages
+│   │   │   └── men.html          
+│   │   │   └── women.html        
+│   │   │   └── electronics.html  
+│   │   ├── about.html        
+│   │   ├── Checkout.html     
+│   │   ├── customer-service.html  
+│   │   ├── Details.html      
+│   │   ├── faq.html          
+│   │   ├── home.html         
+│   │   ├── Landing.html      
+│   │   ├── privacy.html      
+│   │   └── terms.html        
+│   │
+│   ├── images/               # Image assets
+│   │   └── ...
+│   │
+│   └── js/                   # Client-side JavaScript
+│       ├── login_script.js   # Login functionality
+│       └── logout_script.js  # Logout functionality
+│
+├── src/                      # Server-side source code
+│   ├── controllers/          # Request handlers
+│   │   ├── authController.js # Authentication logic
+│   │   └── productController.js # Product logic
+│   │
+│   ├── middlewares/          # Express middlewares
+│   │   └── authMiddleware.js # Authentication middleware
+│   │
+│   ├── models/               # Database models
+│   │   ├── productModel.js     
+│   │   └── userModel.js       # User model
+│   │
+│   ├── routes/               # Route definitions
+│   │   ├── authRoutes.js     # Authentication routes
+│   │   └── productRoutes.js # Product routes
+│   |   └── transactionRoutes.js # Transaction routes
+│   │
+│   └── services/             # Business logic
+│       ├── authService.js    # Authentication service
+│       └── sessionStore.js   # Session management
+│
+├── .gitignore                # Git ignore file
+├── package.json              # Project metadata and dependencies
+├── package-lock.json         # Dependency lock file
+├── README.md                 # This file
+└── server.js                 # Application entry point
 ```
+
+# Installation
+
+1. Clone the repository
+2. Install dependencies
+  - npm install
+3. Set up the database
+  - npm run db:setup
+4. Run the server
+  - npm run dev / node server.js
+
+# Usage
+
+1. Start the server
+2. Open your browser and navigate to http://localhost:3000
+3. Use the application

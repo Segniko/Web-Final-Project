@@ -10,7 +10,7 @@ const host = "0.0.0.0";
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 // Serve static files (CSS, JS, images)
-// Configure static file serving with proper error handling
+// Configures static file serving with proper error handling
 app.use(express.static(path.join(__dirname, 'public'), {
     setHeaders: (res, path, stat) => {
         console.log('Serving static file:', path);
