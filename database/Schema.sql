@@ -172,3 +172,5 @@ CREATE TABLE admin (
     password VARCHAR(255) NOT NULL,
     fname VARCHAR(50) NOT NULL
 );
+
+INSERT INTO admin (email, password, fname) VALUES('admin@gmail.com', 'admin1234', 'Admin');
