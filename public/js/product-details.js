@@ -91,7 +91,7 @@ function updateProductDetails(product) {
 
     // Wire action buttons
     // There are two kinds of "add to cart" controls in the page: the top-nav cart anchor (anchor tag)
-    // and the main page "Add to Cart" button (button element). We'll bind accordingly.
+    // and the main page "Add to Cart" button (button element). Binded accordingly.
     const addButtons = document.querySelectorAll('.btn-add-to-cart');
     addButtons.forEach(el => {
         if (el.tagName.toLowerCase() === 'a') {

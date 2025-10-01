@@ -5,38 +5,35 @@ const db = require('../../config/db'); // Updated path to db.js
 // Create a new transaction
 router.post('/', async (req, res) => {
     console.log('Received transaction request:', req.body);
-    const { product_id, total_amount, payment_method, shipping_address } = req.body;
-    
+    const { total_amount, payment_method, shipping_address, email, items } = req.body;
+
+    // Debug: log received items and JSON
+    console.log('Received items from checkout:', items);
+    console.log('JSON sent to DB:', JSON.stringify(items));
+
     // Validate required fields
-    if (!product_id || !total_amount || !payment_method || !shipping_address) {
-        console.error('Missing required fields:', { product_id, total_amount, payment_method, shipping_address });
+    if (!total_amount || !payment_method || !shipping_address || !items || !Array.isArray(items) || items.length === 0) {
+        console.error('Missing required fields:', { total_amount, payment_method, shipping_address, items });
         return res.status(400).json({
             success: false,
             message: 'Missing required fields'
         });
     }
 
+    // Use first item's id for legacy product_id, or null if not present
+    const product_id = items[0]?.id || null;
+
     try {
-        const result = await db.query(
-            'INSERT INTO transactions (product_id, total_amount, payment_method, shipping_address) VALUES ($1, $2, $3, $4) RETURNING *',
-            [product_id, total_amount, payment_method, shipping_address]
-        );
-        
-        res.status(201).json({
-            success: true,
-            transaction: result.rows[0]
+        // Transaction insert logic removed. Implement in service/controller as needed.
+        res.status(501).json({
+            success: false,
+            message: 'Transaction insert not implemented in route.'
         });
     } catch (error) {
-        console.error('Error creating transaction:', {
-            error: error.message,
-            stack: error.stack,
-            query: 'INSERT INTO transactions (product_id, total_amount, payment_method, shipping_address) VALUES ($1, $2, $3, $4)',
-            params: [product_id, total_amount, payment_method, shipping_address]
-        });
         res.status(500).json({
             success: false,
             message: 'Failed to process transaction',
-            error: error.message // Send error details to client for debugging
+            error: error.message
         });
     }
 });

@@ -39,22 +39,7 @@
             box-shadow: none;
             border-color: rgba(13, 110, 253, 0.25);
         }
-        .search-box {
-            position: relative;
-            margin-bottom: 30px;
-        }
-        .search-box .form-control {
-            padding-left: 45px;
-            height: 50px;
-            border-radius: 25px;
-            border: 1px solid #ddd;
-        }
-        .search-box i {
-            position: absolute;
-            left: 20px;
-            top: 15px;
-            color: #6c757d;
-        }
+        
         .help-card {
             border: none;
             border-radius: 10px;
@@ -91,12 +76,6 @@
                 <div class="faq-container">
                     <h1>Frequently Asked Questions</h1>
                     <p class="lead mb-4">Find answers to common questions about our products, services, and policies.</p>
-                    
-                    <!-- Search Box -->
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" class="form-control" id="faqSearch" placeholder="Search our FAQs...">
-                    </div>
 
                     <!-- Help Cards -->
                     <div class="row mb-5">
@@ -111,9 +90,9 @@
                         <div class="col-md-4 mb-4">
                             <div class="card help-card text-center p-4">
                                 <i class="fas fa-exchange-alt"></i>
-                                <h3>Returns & Exchanges</h3>
+                                <h3>Returns</h3>
                                 <p>Learn about our return policy and how to process a return or exchange.</p>
-                                <a href="/returns" class="btn btn-outline-primary">View Return Policy</a>
+                                <a href="#returns" class="btn btn-outline-primary">View Return Policy</a>
                             </div>
                         </div>
                         <div class="col-md-4 mb-4">
@@ -171,7 +150,7 @@
                         </div>
                     </div>
 
-                    <div class="faq-category" id="orders">
+                    <div class="faq-category" id="returns">
                         <h2>Orders & Returns</h2>
                         <div class="accordion mb-4" id="ordersAccordion">
                             <div class="accordion-item">
@@ -182,8 +161,7 @@
                                 </h3>
                                 <div id="order1" class="accordion-collapse collapse show" data-bs-parent="#ordersAccordion">
                                     <div class="accordion-body">
-                                        <p>You can check your order status by logging into your account and viewing your order history. You'll also receive email updates at each stage of the order process, including order confirmation, shipping confirmation, and delivery notification.</p>
-                                        <p>If you checked out as a guest, you can track your order using the link in your shipping confirmation email.</p>
+                                        <p>You can track your order using the link in your shipping confirmation email.</p>
                                     </div>
                                 </div>
                             </div>
@@ -195,8 +173,7 @@
                                 </h3>
                                 <div id="order2" class="accordion-collapse collapse" data-bs-parent="#ordersAccordion">
                                     <div class="accordion-body">
-                                        <p>We offer a 30-day return policy from the date of delivery. Items must be in their original condition with all tags attached. To initiate a return, please visit our <a href="returns.html">Returns & Exchanges</a> page and follow the instructions.</p>
-                                        <p>Please note that final sale items, gift cards, and personalized items are not eligible for return or exchange.</p>
+                                        <p>We offer a 30-day return policy from the date of delivery. Items must be in their original condition with all tags attached. To initiate a return, please contact our <a href="/service">Customer Service</a> team with your order number.</p>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +185,7 @@
                                 </h3>
                                 <div id="order3" class="accordion-collapse collapse" data-bs-parent="#ordersAccordion">
                                     <div class="accordion-body">
-                                        <p>Once we receive your return, please allow 3-5 business days for processing. You'll receive an email notification once your return has been processed. Refunds are typically issued within 5-7 business days after processing, depending on your payment method and financial institution.</p>
+                                        <p>Once we receive your return please allow 3-5 business days for processing. You'll receive an email notification once your return has been processed. Refunds are typically issued within 5-7 business days after processing, depending on your payment method and financial institution.</p>
                                     </div>
                                 </div>
                             </div>
@@ -228,14 +205,9 @@
                                     <div class="accordion-body">
                                         <p>We accept the following payment methods:</p>
                                         <ul>
-                                            <li>Visa</li>
-                                            <li>Mastercard</li>
-                                            <li>American Express</li>
-                                            <li>Discover</li>
-                                            <li>PayPal</li>
-                                            <li>Apple Pay</li>
-                                            <li>Google Pay</li>
-                                            <li>Style Hub Gift Cards</li>
+                                            <li>Cash</li>
+                                            <li>Paypal</li>
+                                            <li>Credit/debit cards</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -248,8 +220,7 @@
                                 </h3>
                                 <div id="payment2" class="accordion-collapse collapse" data-bs-parent="#paymentsAccordion">
                                     <div class="accordion-body">
-                                        <p>Yes, shopping on our website is completely secure. We use industry-standard SSL (Secure Socket Layer) encryption to protect your personal and payment information. Your credit card details are never stored on our servers.</p>
-                                        <p>For added security, we also support 3D Secure authentication for eligible cards, which may require additional verification from your bank.</p>
+                                        <p>Yes, shopping on our website is completely secure. We use industry standard SSL (Secure Socket Layer) encryption to protect your personal and payment information. Your credit card details are never stored on our servers.</p>
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +232,7 @@
                                 </h3>
                                 <div id="payment3" class="accordion-collapse collapse" data-bs-parent="#paymentsAccordion">
                                     <div class="accordion-body">
-                                        <p>We're happy to offer price adjustments on full-priced items within 7 days of your purchase if the price drops. Please note that we do not offer price adjustments on sale items, clearance items, or during special promotional events.</p>
+                                        <p>We're happy to offer price adjustments on full priced items within 7 days of your purchase if the price drops. Please note that we do not offer price adjustments on sale items, clearance items, or during special promotional events.</p>
                                         <p>To request a price adjustment, please contact our <a href="/service">Customer Service</a> team with your order number and the lower price you've found.</p>
                                     </div>
                                 </div>
@@ -295,17 +266,17 @@
                 <div class="col-lg-2 col-md-4">
                     <h6>Shop</h6>
                     <ul class="list-unstyled">
-                        <li><a href="Category/Men.html" class="text-muted text-decoration-none">Men's Fashion</a></li>
-                        <li><a href="Category/Women.html" class="text-muted text-decoration-none">Women's Fashion</a></li>
-                        <li><a href="Category/Electronics.html" class="text-muted text-decoration-none">Electronics</a></li>
+                        <li><a href="/category/Men" class="text-muted text-decoration-none">Men's Fashion</a></li>
+                        <li><a href="/category/Women" class="text-muted text-decoration-none">Women's Fashion</a></li>
+                        <li><a href="/category/Electronics" class="text-muted text-decoration-none">Electronics</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <h6>Help</h6>
                     <ul class="list-unstyled">
-                        <li><a href="about.html" class="text-muted text-decoration-none">About us</a></li>
-                        <li><a href="customer-service.html" class="text-muted text-decoration-none">Customer Service</a></li>
-                        <li><a href="faq.html" class="text-muted text-decoration-none">FAQs</a></li>
+                        <li><a href="/about" class="text-muted text-decoration-none">About us</a></li>
+                        <li><a href="/service" class="text-muted text-decoration-none">Customer Service</a></li>
+                        <li><a href="/faq" class="text-muted text-decoration-none">FAQs</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 ms-lg-auto">

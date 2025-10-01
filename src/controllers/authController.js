@@ -1,7 +1,6 @@
 const { login, register } = require('../services/authService');
 const { createSession, deleteSession } = require("../services/sessionStore");
 
-
 const loginController = async (req, res) => {
     try {
         const { email, password } = req.body;

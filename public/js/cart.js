@@ -35,7 +35,7 @@
     // Update on load
     document.addEventListener('DOMContentLoaded', updateCartCounter);
 
-    // Listen for cross-tab updates
+    // Listen for cross tab updates
     window.addEventListener('storage', (e) => {
         if (e.key === 'cart') updateCartCounter();
     });

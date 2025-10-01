@@ -9,8 +9,8 @@ const host = "0.0.0.0";
 // Increase body parser limits to allow base64 image uploads in JSON
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
 // Serve static files (CSS, JS, images)
-// Configure static file serving with proper error handling
 app.use(express.static(path.join(__dirname, 'public'), {
     setHeaders: (res, path, stat) => {
         console.log('Serving static file:', path);
@@ -19,13 +19,13 @@ app.use(express.static(path.join(__dirname, 'public'), {
     redirect: false
 }));
 
-// Add a specific route for any path ending with .html 
-// This supports case-insensitive requests like /FAQ.html or nested paths like /Admin/login.html
+// Adds a specific route for any path ending with .html 
+// Also supports case insensitive requests
 app.get(/.*\.html$/i, (req, res, next) => {
     const fs = require('fs');
     const htmlRoot = path.join(__dirname, 'public', 'html');
 
-    // Create a safe relative path (strip leading slash, normalize, prevent traversal)
+    // Creates a safe relative path
     const relative = req.path.replace(/^\//, '').toLowerCase();
     const normalized = path.normalize(relative);
     const targetPath = path.join(htmlRoot, normalized);
@@ -130,8 +130,8 @@ app.get('/api/products/:id', async (req, res) => {
         const result = await pool.query(
             `SELECT id, name, category, rate, price, image_url, description, 
                     created_at, sales_count 
-             FROM products 
-             WHERE id = $1`, 
+            FROM products 
+            WHERE id = $1`, 
             [id]
         );
         
@@ -214,7 +214,7 @@ app.get('/admin/dashboard', requireAuth , (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html' , 'admin', 'dashboard.html'));
 });
 
-// Utility route for development: clear client-side cart and redirect to checkout
+//Clears client side cart and redirect to checkout
 app.get('/clear-cart', (req, res) => {
     res.send(`
         <!doctype html>
@@ -255,28 +255,22 @@ app.post('/api/transactions', async (req, res) => {
         await client.query('BEGIN');
         const inserted = [];
 
+        // Insert only one transaction per checkout, with all items in item_list
+        const productId = Number(items[0]?.id || items[0]?.product_id);
+        const amount = Number((items.reduce((sum, it) => sum + (Number(it.price) * (Number(it.quantity) || 1)), 0) + 5 + (items.reduce((sum, it) => sum + (Number(it.price) * (Number(it.quantity) || 1)), 0) * 0.10)).toFixed(2));
+        const insertRes = await client.query(
+            `INSERT INTO transactions (product_id, total_amount, payment_method, shipping_address, email, item_list)
+            VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, created_at`,
+            [productId, amount, payment_method, shipping_address, email, JSON.stringify(items)]
+        );
+
+        // Update sales_count for each product
         for (const it of items) {
-            const productId = Number(it.id || it.product_id);
             const quantity = Number(it.quantity) || 1;
-            const price = Number(it.price) || 0;
-
-            if (!productId || isNaN(productId)) {
-                await client.query('ROLLBACK');
-                return res.status(400).json({ error: 'Invalid product id in items' });
+            const prodId = Number(it.id || it.product_id);
+            if (prodId) {
+                await client.query('UPDATE products SET sales_count = COALESCE(sales_count,0) + $1 WHERE id = $2', [quantity, prodId]);
             }
-
-            const amount = Number((price * quantity).toFixed(2));
-
-            const insertRes = await client.query(
-                `INSERT INTO transactions (product_id, total_amount, payment_method, shipping_address, email)
-                 VALUES ($1, $2, $3, $4, $5) RETURNING id, created_at`,
-                [productId, amount, payment_method, shipping_address, email]
-            );
-
-            inserted.push({ id: insertRes.rows[0].id, product_id: productId, amount, created_at: insertRes.rows[0].created_at });
-
-            // Update product sales count
-            await client.query('UPDATE products SET sales_count = COALESCE(sales_count,0) + $1 WHERE id = $2', [quantity, productId]);
         }
 
         await client.query('COMMIT');
@@ -290,7 +284,7 @@ app.post('/api/transactions', async (req, res) => {
     }
 });
 
-// listening for requests on the port specified
+// Listening for requests on the port specified
 app.listen(port, host, () => {
     console.log(`Listening at ${host}:${port}`);
 })

@@ -1,6 +1,6 @@
 # Project Description
 
-Style Hub is a modern full-stack modern E-commerce website that allows the user to shop for products online and make purchases. It will have categories for men, women, and electronics. The overall Page structure and Tech Stack looks like this:
+Style Hub is a modern full-stack modern E-commerce website that allows the user to shop for products online and make purchases. It will have categories for men, women, and accessories(electronics). The overall Page structure and Tech Stack looks like this:
 
 # Tech Stack
 - HTML, CSS, Javascript, Node/Express.js, PostgreSQL, Bootstrap
@@ -70,9 +70,7 @@ Web-Final-Project
 │   │   ├── Details.html      
 │   │   ├── faq.html          
 │   │   ├── home.html         
-│   │   ├── Landing.html      
-│   │   ├── privacy.html      
-│   │   └── terms.html        
+│   │   ├── Landing.html         
 │   │
 │   ├── images/               # Image assets
 │   │   └── ...
@@ -111,30 +109,30 @@ Web-Final-Project
 
 # Images
 **1. Home Page**
-<img width="936" height="645" alt="image" src="https://github.com/user-attachments/assets/dcd53568-784c-4ae4-a7f1-3070f9eb40fa" />
+<img width="936" height="645" alt="image" src="/public/images/Screenshot 1.png>
 
 **2.Details Page**
-<img width="938" height="642" alt="image" src="https://github.com/user-attachments/assets/0a46b7d2-c063-4c25-b66b-f6070a3f94b0" />
+<img width="938" height="642" alt="image" src="/public/images/Screenshot 2.png" />
 
 **3.Checkout Page**
-<img width="940" height="646" alt="image" src="https://github.com/user-attachments/assets/e1507ff3-18fc-4495-b068-9368988e2151" />
+<img width="940" height="646" alt="image" src="/public/images/Screenshot 3.png" />
 
 **4. Category/Men**
-<img width="946" height="647" alt="image" src="https://github.com/user-attachments/assets/419a7a40-dc06-40c9-b44d-938aa200fea3" />
+<img width="946" height="647" alt="image" src="/public/images/Screenshot 4.png" />
 
 
 # Preview of Pages
 **1. Home Page**
-<img width="1364" height="593" alt="image" src="https://github.com/user-attachments/assets/8ce25fad-9bc1-47c9-ad7f-ba2498d0c53a" />
+<img width="1364" height="593" alt="image" src="/public/images/Screenshot 5.png" />
 
 **2. Details Page**
-<img width="1365" height="598" alt="image" src="https://github.com/user-attachments/assets/c4aed4a2-a3a3-4a41-bd90-d0a2e23fda40" />
+<img width="1365" height="598" alt="image" src="/public/images/Screenshot 6.png" />
 
 **3. Checkout Page**
-<img width="1365" height="595" alt="image" src="https://github.com/user-attachments/assets/51995675-fb03-4239-b11c-ab70c6542a01" />
+<img width="1365" height="595" alt="image" src="/public/images/Screenshot 7.png" />
 
 **4. Admin Dashboard**
-<img width="1365" height="596" alt="image" src="https://github.com/user-attachments/assets/2ba9f93e-f4c8-43fe-acd9-65dc31981e45" />
+<img width="1365" height="596" alt="image" src="/public/images/Screenshot 8.png" />
 
 # Installation
 

@@ -1,6 +1,5 @@
-// checkout.js
+// Checkout.js
 // Renders cart items in the checkout page and computes subtotal, tax and total.
-
 function getCart() {
     try {
         const raw = localStorage.getItem('cart');
@@ -72,6 +71,17 @@ function renderCheckout() {
 document.addEventListener('DOMContentLoaded', () => {
     renderCheckout();
 
+    // Payment method dynamic fields
+    function updatePaymentFields() {
+        const method = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+        document.getElementById('creditCardFields').style.display = method === 'credit_card' ? 'block' : 'none';
+        document.getElementById('paypalFields').style.display = method === 'paypal' ? 'block' : 'none';
+    }
+    document.querySelectorAll('input[name="paymentMethod"]').forEach(el => {
+        el.addEventListener('change', updatePaymentFields);
+    });
+    updatePaymentFields();
+
     // Attach to checkout form submit (if exists)
     const checkoutForm = document.getElementById('checkoutForm');
     if (checkoutForm) {
@@ -88,10 +98,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const tax = subtotal * 0.10;
             const total = subtotal + shipping + tax;
 
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value || 'credit_card';
+
+            // Validate payment fields
+            if (paymentMethod === 'credit_card') {
+                const cardNumber = document.getElementById('cardNumber').value.trim();
+                const cardExpiry = document.getElementById('cardExpiry').value.trim();
+                const cardCVV = document.getElementById('cardCVV').value.trim();
+                if (!cardNumber || !cardExpiry || !cardCVV) {
+                    alert('Please fill in all credit card details.');
+                    return;
+                }
+            }
+            if (paymentMethod === 'paypal') {
+                const paypalEmail = document.getElementById('paypalEmail').value.trim();
+                if (!paypalEmail) {
+                    alert('Please enter your PayPal email.');
+                    return;
+                }
+            }
+
             const formData = {
                 items: cart,
                 total_amount: total,
-                payment_method: document.querySelector('input[name="paymentMethod"]:checked')?.value || 'credit_card',
+                payment_method: paymentMethod,
                 shipping_address: `${document.getElementById('address')?.value || ''}, ${document.getElementById('city')?.value || ''}, ${document.getElementById('zipCode')?.value || ''}`,
                 email: document.getElementById('email')?.value || ''
             };

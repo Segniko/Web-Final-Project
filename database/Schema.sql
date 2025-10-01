@@ -1,3 +1,10 @@
+--CREATE DATABASE
+CREATE DATABASE webproject;
+
+--Connecting to the Database
+\c webproject
+
+--CREATE TYPE
 DO $$
 BEGIN
    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'product_category') THEN
@@ -147,9 +154,12 @@ CREATE TABLE transactions (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     shipping_address TEXT NOT NULL
 );
+
 -- Inserted email column to transactions for customer contact
 ALTER TABLE transactions ADD COLUMN IF NOT EXISTS email VARCHAR(255);
 
+-- Add item_list column to transactions for storing multiple items
+ALTER TABLE transactions ADD COLUMN IF NOT EXISTS item_list JSON;
 
 --Updated the images url for all products
 UPDATE products

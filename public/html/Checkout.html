@@ -15,14 +15,11 @@
             margin: 0;
             padding: 0;
         }
-        
-        /* Home Page Specific Styles */
         .main-header {
             background: #f8f9fa;
             padding: 1rem 0;
             border-bottom: 1px solid #e9ecef;
         }
-
         .search-bar {
             max-width: 500px;
             margin: 0 auto;
@@ -40,34 +37,31 @@
                     max-width: 100% !important;
                 }
 
-                /* Make header columns stack and allow search to fill width (match Details.html behavior) */
+                /* Makes header columns stack and allow search to fill width (match Details.html behavior) */
                 .main-header .row {
                     align-items: center;
                 }
-
                 .main-header .col, .main-header .col-auto {
                     flex: 0 0 100%;
                     max-width: 100%;
                     margin-bottom: 0.5rem;
                 }
-
                 .main-header .logo-col {
                     flex: 0 0 auto !important;
                     max-width: none !important;
                     margin-bottom: 0 !important;
                 }
-
                 .main-header .col-auto .d-flex {
                     justify-content: flex-end;
                 }
             }
-        .step-indicator {
+            .step-indicator {
             display: flex;
             justify-content: space-between;
             max-width: 800px;
             margin: 0 auto;
             position: relative;
-        }
+            }
         .step {
             display: flex;
             flex-direction: column;
@@ -259,9 +253,105 @@
     </nav>
 
     <div class="checkout-container py-3">
-        <div class="row align-items-start">
-            <!-- Order Summary - Moved to top right -->
-            <div class="col-lg-4 order-lg-2 mb-4">
+        <div class="row flex-column-reverse flex-lg-row align-items-start">
+            <!-- Checkout Form - Takes remaining space -->
+            <div class="col-12 col-lg-8 order-2 order-lg-1">
+                <!-- Render cart items above the form on all devices -->
+                <div class="checkout-items mb-4"></div>
+                <form id="checkoutForm" class="mb-4">
+                            <h4 class="mb-4 py-3">Shipping Information</h4>
+                            <div class="row">
+                                <div class="col-12 col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6 mb-3">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="zipCode" class="form-label">ZIP Code</label>
+                                    <input type="text" class="form-control" id="zipCode" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="country" class="form-label">Country</label>
+                                <select class="form-select" id="country" required>
+                                    <option value="">Select Country</option>
+                                    <option value="ET">Ethiopia</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <!-- Payment method selection -->
+                            <div class="mb-3">
+                                <label class="form-label">Payment Method</label>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <label class="payment-method d-flex align-items-center" for="pm_credit">
+                                        <input type="radio" name="paymentMethod" id="pm_credit" value="credit_card" checked class="me-2">
+                                        <div>
+                                            <div class="fw-bold">Credit / Debit Card</div>
+                                            <small class="text-muted">Secure card payment</small>
+                                        </div>
+                                    </label>
+
+                                    <label class="payment-method d-flex align-items-center" for="pm_paypal">
+                                        <input type="radio" name="paymentMethod" id="pm_paypal" value="paypal" class="me-2">
+                                        <div>
+                                            <div class="fw-bold">PayPal</div>
+                                            <small class="text-muted">Use your PayPal account</small>
+                                        </div>
+                                    </label>
+
+                                    <label class="payment-method d-flex align-items-center" for="pm_cod">
+                                        <input type="radio" name="paymentMethod" id="pm_cod" value="cod" class="me-2">
+                                        <div>
+                                            <div class="fw-bold">Cash on Delivery</div>
+                                            <small class="text-muted">Pay when you receive the order</small>
+                                        </div>
+                                    </label>
+                                </div>
+                                <!-- Dynamic payment details -->
+                                <div id="creditCardFields" style="display:none; margin-top:1rem;">
+                                    <label for="cardNumber" class="form-label">Card Number</label>
+                                    <input type="text" class="form-control mb-2" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <label for="cardExpiry" class="form-label">Expiry (MM/YY)</label>
+                                            <input type="text" class="form-control mb-2" id="cardExpiry" maxlength="5" placeholder="MM/YY">
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label for="cardCVV" class="form-label">CVV</label>
+                                            <input type="text" class="form-control mb-2" id="cardCVV" maxlength="4" placeholder="CVV">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="paypalFields" style="display:none; margin-top:1rem;">
+                                    <label for="paypalEmail" class="form-label">PayPal Email</label>
+                                    <input type="email" class="form-control mb-2" id="paypalEmail" placeholder="your@email.com">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mt-3 py-3">Complete Order</button>
+                        </form>
+            </div>
+
+            <!-- Order Summary - Always on right for desktop, below for mobile -->
+            <div class="col-12 col-lg-4 order-1 order-lg-2 mb-4">
                 <div class="card">
                     <div class="card-header bg-light">
                         <h5 class="mb-0">Order Summary</h5>
@@ -290,89 +380,6 @@
                 </div>
             </div>
 
-            <!-- Checkout Form - Takes remaining space -->
-            <div class="col-lg-8 order-lg-1">
-                        <form id="checkoutForm" class="mb-4">
-                    <h4 class="mb-4 py-3">Shipping Information</h4>
-                            <form id="shippingForm">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" required>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="city" class="form-label">City</label>
-                                <input type="text" class="form-control" id="city" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="zipCode" class="form-label">ZIP Code</label>
-                                <input type="text" class="form-control" id="zipCode" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="country" class="form-label">Country</label>
-                            <select class="form-select" id="country" required>
-                                <option value="">Select Country</option>
-                                <option value="ET">Ethiopia</option>
-                                <option value="US">United States</option>
-                                <option value="CA">Canada</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <!-- Payment method selection -->
-                        <div class="mb-3">
-                            <label class="form-label">Payment Method</label>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <label class="payment-method d-flex align-items-center" for="pm_credit">
-                                    <input type="radio" name="paymentMethod" id="pm_credit" value="credit_card" checked class="me-2">
-                                    <div>
-                                        <div class="fw-bold">Credit / Debit Card</div>
-                                        <small class="text-muted">Secure card payment</small>
-                                    </div>
-                                </label>
-
-                                <label class="payment-method d-flex align-items-center" for="pm_paypal">
-                                    <input type="radio" name="paymentMethod" id="pm_paypal" value="paypal" class="me-2">
-                                    <div>
-                                        <div class="fw-bold">PayPal</div>
-                                        <small class="text-muted">Use your PayPal account</small>
-                                    </div>
-                                </label>
-
-                                <label class="payment-method d-flex align-items-center" for="pm_cod">
-                                    <input type="radio" name="paymentMethod" id="pm_cod" value="cod" class="me-2">
-                                    <div>
-                                        <div class="fw-bold">Cash on Delivery</div>
-                                        <small class="text-muted">Pay when you receive the order</small>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                </form>
-            </div>
-
-            <!-- Render cart items above the form (if any) -->
-            <div class="container mt-4">
-                <div class="checkout-items"></div>
-            </div>
-
         </div>
     </div>
             </div>
@@ -395,17 +402,17 @@
                 <div class="col-lg-2 col-md-4">
                     <h6>Shop</h6>
                     <ul class="list-unstyled">
-                        <li><a href="Category/Men.html" class="text-muted text-decoration-none">Men's Fashion</a></li>
-                        <li><a href="Category/Women.html" class="text-muted text-decoration-none">Women's Fashion</a></li>
-                        <li><a href="Category/Electronics.html" class="text-muted text-decoration-none">Electronics</a></li>
+                        <li><a href="/category/Men" class="text-muted text-decoration-none">Men's Fashion</a></li>
+                        <li><a href="/category/Women" class="text-muted text-decoration-none">Women's Fashion</a></li>
+                        <li><a href="/category/Electronics" class="text-muted text-decoration-none">Electronics</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <h6>Help</h6>
                     <ul class="list-unstyled">
-                        <li><a href="about.html" class="text-muted text-decoration-none">About us</a></li>
-                        <li><a href="customer-service.html" class="text-muted text-decoration-none">Customer Service</a></li>
-                        <li><a href="faq.html" class="text-muted text-decoration-none">FAQs</a></li>
+                        <li><a href="/about" class="text-muted text-decoration-none">About us</a></li>
+                        <li><a href="/service" class="text-muted text-decoration-none">Customer Service</a></li>
+                        <li><a href="/faq" class="text-muted text-decoration-none">FAQs</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 ms-lg-auto">

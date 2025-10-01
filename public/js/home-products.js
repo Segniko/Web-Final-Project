@@ -34,7 +34,7 @@ function createProductCard(product, showCategory = true) {
     `;
 }
 
-// --- Cart helpers for home product buttons ---
+// Cart helpers for home product buttons
 function getCart() {
     try {
         if (window.siteCart && typeof window.siteCart.getCart === 'function') {
@@ -48,6 +48,7 @@ function getCart() {
     }
 }
 
+// Save cart to localStorage and notify other listeners
 function saveCart(cart) {
     try {
         localStorage.setItem('cart', JSON.stringify(cart));
@@ -58,6 +59,7 @@ function saveCart(cart) {
     }
 }
 
+// Update cart counter
 function updateCartCounter() {
     try {
         if (window.siteCart && typeof window.siteCart.updateCartCounter === 'function') {
@@ -76,6 +78,7 @@ function updateCartCounter() {
     }
 }
 
+// Add a product to the cart
 function addToCart(product) {
     if (!product || !product.id) return;
     const cart = getCart();
@@ -97,6 +100,7 @@ function addToCart(product) {
     updateCartCounter();
 }
 
+// Attach add-to-cart button handlers within a container
 function attachAddToCartHandlers(container) {
     if (!container) return;
     const buttons = container.querySelectorAll('.btn-add-to-cart');
@@ -105,7 +109,7 @@ function attachAddToCartHandlers(container) {
         // Avoid attaching multiple listeners
         if (btn._hasAddToCart) return;
         btn._hasAddToCart = true;
-        // Use capture phase and stop propagation so the surrounding <a> won't navigate
+        // Uses capture phase and stop propagation so the surrounding <a> won't navigate
         const handleClick = (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -122,7 +126,7 @@ function attachAddToCartHandlers(container) {
             }
         };
         btn.addEventListener('click', handleClick, true);
-        // Also block mousedown from bubbling to avoid some browsers activating the parent link
+        // Also blocks mousedown from bubbling to avoid some browsers activating the parent link
         btn.addEventListener('mousedown', (e) => { e.stopPropagation(); }, true);
     });
 }
@@ -145,7 +149,7 @@ function renderProducts(products, containerId) {
         return;
     }
     
-    // Allow caller to pass container-specific preference via container's data attribute
+    // Allow caller to pass container specific preference via container's data attribute
     const showCategoryAttr = container.getAttribute('data-show-category');
     const showCategory = showCategoryAttr === null ? true : showCategoryAttr === 'true';
     container.innerHTML = products.map(product => createProductCard(product, showCategory)).join('');

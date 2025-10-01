@@ -8,10 +8,8 @@ function requireAuth(req, res, next) {
         cookieHeader.split(";").map(c => c.trim().split("="))
     );
 
-
     const sessionId = cookies.sessionId;
     const session = getUserBySession(sessionId);
-
 
     if (!session) return res.status(401).send("Not authorized");
 

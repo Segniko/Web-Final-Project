@@ -10,5 +10,4 @@ const getUserByEmail = async (email) => {
     return result.rows[0] || null;
 };
 
-
 module.exports = { getUser, getUserByEmail };
