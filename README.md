@@ -109,7 +109,7 @@ Web-Final-Project
 
 # Images
 **1. Home Page**
-<img width="936" height="645" alt="image" src="/public/images/Screenshot 1.png>
+<img width="936" height="645" alt="image" src="/public/images/Screenshot 1.png">
 
 **2.Details Page**
 <img width="938" height="642" alt="image" src="/public/images/Screenshot 2.png" />
