@@ -23,15 +23,4 @@ const login = async (email, password) => {
     }
 };
 
-const register = async (fname, email, password) => {
-    let user = await getUserByEmail(email);
-    if (!user) {
-        let newUser = await createUser(fname, email, password);
-        return new Response(newUser, 'User created successfully');
-    } else {
-        console.error('user already exist');
-        return new Response(null, 'User already registered');
-    }
-}
-
 module.exports = { login , register };
