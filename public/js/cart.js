@@ -1,6 +1,5 @@
 // cart.js - shared cart utilities used by multiple pages
-// cart.js - shared cart utilities used by multiple pages
-(function () {
+    (function () {
     // Retrieves the cart array from localStorage, or returns an empty array if not found or parsing fails
     function getCart() {
         try {
