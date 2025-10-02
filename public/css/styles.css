@@ -1,4 +1,5 @@
 /* Global Styles */
+/* Theme color variables for consistent styling across the site */
 :root {
     --primary-color: #0d6efd;
     --secondary-color: #6c757d;
@@ -7,10 +8,12 @@
     --success-color: #198754;
 }
 
+/* Ensure full height for sticky footer layout */
 html, body {
     height: 100%;
 }
 
+/* Flexbox layout for sticky footer, sets font and base color, adds top padding for fixed navbar */
 body {
     display: flex;
     flex-direction: column;
@@ -20,11 +23,13 @@ body {
     padding-top: 56px; /* Space for fixed navbar */
 }
 
+/* Main content grows to fill space, pushes footer to bottom */
 main {
     flex: 1 0 auto; /* allows main content to grow and push footer to bottom */
 }
 
 /* Navbar Styles */
+/* Customizes Bootstrap navbar: semi-transparent, blurred background, subtle shadow, border, and smooth transitions */
 .navbar {
     background-color: rgba(255, 255, 255, 0.9) !important;
     backdrop-filter: blur(10px);
@@ -35,6 +40,7 @@ main {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+/* Brand logo styling: larger, bold, custom color, smooth transition */
 .navbar-brand {
     font-size: 1.6rem;
     font-weight: 700;
@@ -43,51 +49,61 @@ main {
     padding: 0.25rem 0;
 }
 
+/* Hamburger button for mobile nav, removes border */
 .navbar-toggler {
     border: none;
     padding: 0.5rem;
 }
 
+/* Removes default focus outline/shadow for cleaner look */
 .navbar-toggler:focus {
     box-shadow: none;
     outline: none;
 }
 
+/* Custom SVG icon for navbar toggler */
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
+/* Overrides Bootstrap outline-light button for navbar */
 .navbar .btn-outline-light {
     color: #1a1a2e;
     border-color: #1a1a2e;
 }
 
+/* Inverts colors on hover for outline-light button */
 .navbar .btn-outline-light:hover {
     background-color: #1a1a2e;
     color: #fff;
 }
 
+/* Customizes primary button color for navbar */
 .navbar .btn-primary {
     background-color: #4f46e5;
     border-color: #4f46e5;
 }
 
+/* Darker shade on hover for navbar primary button */
 .navbar .btn-primary:hover {
     background-color: #4338ca;
     border-color: #4338ca;
 }
 
+/* Nav links: font weight, padding, smooth transition */
 .nav-link {
     font-weight: 500;
     padding: 0.5rem 1rem !important;
     transition: all 0.3s ease;
 }
 
+/* Highlight nav link on hover with primary color */
 .nav-link:hover {
     color: var(--primary-color) !important;
 }
 
 /* Hero Section */
+/* Large banner section with gradient background, white text, and background texture overlay */
 .hero-section {
     min-height: 70vh;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -98,6 +114,7 @@ main {
     margin-top: -1rem;
 }
 
+/* Adds subtle linen texture overlay to hero section */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -110,6 +127,7 @@ main {
     pointer-events: none;
 }
 
+/* Main hero heading: bold, large, gradient text effect */
 .hero-section h1 {
     font-weight: 900;
     font-size: 3.5rem;
@@ -123,6 +141,7 @@ main {
     z-index: 1;
 }
 
+/* Hero section subtitle: lighter color, larger font, spacing */
 .hero-section p {
     font-size: 1.25rem;
     color: #e2e8f0;
@@ -131,11 +150,13 @@ main {
     line-height: 1.7;
 }
 
+/* Container for hero image, ensures proper stacking */
 .hero-image-container {
     position: relative;
     z-index: 1;
 }
 
+/* Adds 3D effect and shadow to hero image, rounded corners */
 .hero-image-wrapper {
     position: relative;
     overflow: hidden;
@@ -145,12 +166,14 @@ main {
     transition: transform 0.5s ease;
 }
 
+/* Responsive hero image with smooth transform on hover */
 .hero-image {
     width: 100%;
     height: auto;
     transition: transform 0.5s ease;
 }
 
+/* Floating badge in hero section, animated */
 .hero-badge {
     position: absolute;
     top: -20px;
@@ -158,6 +181,7 @@ main {
     animation: float 3s ease-in-out infinite;
 }
 
+/* Gradient badge styling, shadow, no border */
 .hero-badge .badge {
     background: linear-gradient(45deg, #4f46e5, #8b5cf6) !important;
     border: none;
@@ -165,22 +189,26 @@ main {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+/* Badge heading: bold, spaced letters */
 .hero-badge h5 {
     font-weight: 800;
     letter-spacing: 1px;
 }
 
+/* Smaller, slightly faded badge text */
 .hero-badge small {
     font-size: 0.7rem;
     opacity: 0.9;
 }
 
+/* Keyframes for floating badge animation */
 @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
 
+/* Hero section button: smooth transition, overflow hidden for effect */
 .hero-section .btn {
     transition: all 0.3s ease;
     position: relative;
@@ -188,6 +216,7 @@ main {
     z-index: 1;
 }
 
+/* Button hover effect: subtle white overlay grows on hover */
 .hero-section .btn::after {
     content: '';
     position: absolute;
@@ -473,4 +502,4 @@ footer a:hover {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #0b5ed7;
-}
+} 

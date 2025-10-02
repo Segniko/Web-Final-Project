@@ -23,4 +23,4 @@ const login = async (email, password) => {
     }
 };
 
-module.exports = { login , register };
+module.exports = { login };

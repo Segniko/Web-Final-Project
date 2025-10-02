@@ -60,10 +60,15 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <!-- 'navbar navbar-expand-lg navbar-light bg-light fixed-top': Bootstrap navbar, expands on large screens, light color scheme, fixed to top -->
         <div class="container py-2">
+                <!-- 'container py-2': Bootstrap container, vertical padding -->
             <div class="col-auto">
+                    <!-- 'col-auto': Auto-width column for logo -->
                 <a href="/home" class="text-decoration-none">
+                        <!-- 'text-decoration-none': Removes underline from link -->
                     <h1 class="h4 mb-0">Style Hub</h1>
+                        <!-- 'h4 mb-0': Heading size 4, no bottom margin -->
                 </a>
             </div>
         </div>
@@ -71,20 +76,29 @@
 
     <!-- Main Content -->
     <main class="container py-5 mt-5">
+            <!-- 'container py-5 mt-5': Bootstrap container, vertical padding, top margin for spacing below navbar -->
         <div class="row justify-content-center">
+                <!-- 'row justify-content-center': Bootstrap row, centers columns horizontally -->
             <div class="col-lg-10">
+                    <!-- 'col-lg-10': 10/12 width on large screens -->
                 <div class="faq-container">
+                        <!-- 'faq-container': Custom class for FAQ box styling -->
                     <h1>Frequently Asked Questions</h1>
                     <p class="lead mb-4">Find answers to common questions about our products, services, and policies.</p>
 
                     <!-- Help Cards -->
                     <div class="row mb-5">
+                            <!-- 'row mb-5': Bootstrap row, bottom margin for spacing -->
                         <div class="col-md-4 mb-4">
+                                <!-- 'col-md-4 mb-4': 4/12 width on medium screens, bottom margin -->
                             <div class="card help-card text-center p-4">
+                                    <!-- 'card help-card text-center p-4': Bootstrap card, custom class, center text, padding -->
                                 <i class="fas fa-shipping-fast"></i>
+                                    <!-- Font Awesome icon for shipping -->
                                 <h3>Shipping Info</h3>
                                 <p>Get details about shipping options, delivery times, and tracking your order.</p>
                                 <a href="#shipping" class="btn btn-outline-primary">View Shipping FAQs</a>
+                                    <!-- 'btn btn-outline-primary': Bootstrap outlined primary button -->
                             </div>
                         </div>
                         <div class="col-md-4 mb-4">
@@ -107,16 +121,23 @@
 
                     <!-- FAQ Categories -->
                     <div class="faq-category" id="shipping">
+                            <!-- 'faq-category': Custom class for category section -->
                         <h2>Shipping Information</h2>
                         <div class="accordion mb-4" id="shippingAccordion">
+                                <!-- 'accordion mb-4': Bootstrap accordion, bottom margin -->
                             <div class="accordion-item">
+                                    <!-- 'accordion-item': Bootstrap accordion item -->
                                 <h3 class="accordion-header">
+                                        <!-- 'accordion-header': Bootstrap accordion header -->
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#shipping1">
+                                            <!-- 'accordion-button': Bootstrap button for accordion, toggles collapse -->
                                         How long will it take to receive my order?
                                     </button>
                                 </h3>
                                 <div id="shipping1" class="accordion-collapse collapse show" data-bs-parent="#shippingAccordion">
+                                        <!-- 'accordion-collapse collapse show': Collapsible section, shown by default -->
                                     <div class="accordion-body">
+                                            <!-- 'accordion-body': Content area for accordion -->
                                         <p>Standard shipping typically takes 3-5 business days within the continental US. For international orders, delivery times vary by destination but generally take 7-14 business days. You'll receive a tracking number via email once your order ships, which you can use to track your package's progress.</p>
                                         <p>Expedited shipping options are available at checkout for faster delivery.</p>
                                     </div>

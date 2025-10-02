@@ -1,4 +1,6 @@
-// Function to create a product card
+// Creates a Bootstrap product card HTML for a given product object.
+// Includes product image, name, price, rating, and an add-to-cart button.
+// If showCategory is true, displays the category badge.
 function createProductCard(product, showCategory = true) {
     return `
         <div class="col-md-3 col-6 mb-4">
@@ -34,7 +36,7 @@ function createProductCard(product, showCategory = true) {
     `;
 }
 
-// Cart helpers for home product buttons
+// Retrieves the cart array from localStorage, or from a global siteCart object if available.
 function getCart() {
     try {
         if (window.siteCart && typeof window.siteCart.getCart === 'function') {
@@ -48,7 +50,7 @@ function getCart() {
     }
 }
 
-// Save cart to localStorage and notify other listeners
+// Saves the cart array to localStorage and notifies other listeners in the same tab.
 function saveCart(cart) {
     try {
         localStorage.setItem('cart', JSON.stringify(cart));
@@ -59,7 +61,7 @@ function saveCart(cart) {
     }
 }
 
-// Update cart counter
+// Updates the cart counter in the UI to reflect the total quantity of items in the cart.
 function updateCartCounter() {
     try {
         if (window.siteCart && typeof window.siteCart.updateCartCounter === 'function') {
@@ -78,7 +80,7 @@ function updateCartCounter() {
     }
 }
 
-// Add a product to the cart
+// Adds a product to the cart. If the product already exists, increments its quantity.
 function addToCart(product) {
     if (!product || !product.id) return;
     const cart = getCart();
@@ -100,7 +102,8 @@ function addToCart(product) {
     updateCartCounter();
 }
 
-// Attach add-to-cart button handlers within a container
+// Attaches click handlers to all add-to-cart buttons in a given container.
+// Prevents navigation when clicking the button and gives visual feedback.
 function attachAddToCartHandlers(container) {
     if (!container) return;
     const buttons = container.querySelectorAll('.btn-add-to-cart');
@@ -131,7 +134,8 @@ function attachAddToCartHandlers(container) {
     });
 }
 
-// Function to render products in a section
+// Renders a list of products into a given container by ID.
+// Shows a message if no products are found. Attaches add-to-cart handlers to buttons.
 function renderProducts(products, containerId) {
     const container = document.getElementById(containerId);
     if (!container) {
@@ -157,7 +161,8 @@ function renderProducts(products, containerId) {
     try { attachAddToCartHandlers(container); } catch (e) { console.error('attachAddToCartHandlers failed', e); }
 }
 
-// Function to get category from URL
+// Gets the product category from the current URL path.
+// Maps URL segments to display names (e.g., 'men' -> 'Men').
 function getCategoryFromUrl() {
     const path = window.location.pathname;
     const pathParts = path.split('/');
@@ -178,7 +183,7 @@ function getCategoryFromUrl() {
     return categoryMap[category.toLowerCase()] || null;
 }
 
-// Function to filter products by category
+// Filters a list of products by category name (case-insensitive).
 function filterProductsByCategory(products, category) {
     if (!category) return products;
     return products.filter(product => 
@@ -186,13 +191,14 @@ function filterProductsByCategory(products, category) {
     );
 }
 
-// Fetch and display products
+// Loads products from the backend and displays them in the appropriate sections.
+// Handles both category pages and the home page, including error handling and loading states.
 async function loadProducts() {
     try {
         const currentCategory = getCategoryFromUrl();
         const isCategoryPage = !!currentCategory;
         
-        // Show loading state
+        // Show loading spinner while fetching products
         const container = document.getElementById('products-container');
         if (container) {
             container.innerHTML = `
@@ -204,17 +210,19 @@ async function loadProducts() {
                 </div>`;
         }
 
-        // Fetch all products
+        // Fetch products and (if home page) new arrivals and best sellers
         const [productsRes, newArrivalsRes, bestSellersRes] = await Promise.all([
             fetch('/api/products'),
             isCategoryPage ? Promise.resolve(null) : fetch('/api/products/new-arrivals'),
             isCategoryPage ? Promise.resolve(null) : fetch('/api/products/best-sellers')
         ]);
 
+        // Check for fetch errors
         if (!productsRes.ok || (!isCategoryPage && (!newArrivalsRes || !bestSellersRes || !newArrivalsRes.ok || !bestSellersRes.ok))) {
             throw new Error('Failed to fetch product data');
         }
         
+        // Parse JSON responses
         const [products, newArrivals, bestSellers] = await Promise.all([
             productsRes.json(),
             isCategoryPage ? null : newArrivalsRes.json(),
@@ -241,6 +249,7 @@ async function loadProducts() {
             const featuredContainer = document.getElementById('featured-products-container');
             if (featuredContainer) featuredContainer.setAttribute('data-show-category', 'false');
 
+            // Render products in each section
             renderProducts(products, 'all-products-container');
             renderProducts(newArrivals, 'new-arrivals-container');
             renderProducts(bestSellers, 'featured-products-container');
@@ -252,6 +261,7 @@ async function loadProducts() {
         }
         
     } catch (error) {
+        // Handle errors and show error message in UI
         console.error('Error loading products:', error);
         const containerId = getCategoryFromUrl() ? 'products-container' : 'all-products-container';
         const container = document.getElementById(containerId);
@@ -274,7 +284,8 @@ async function loadProducts() {
     }
 }
 
-// Simple search helper: fetch products and filter by name or category
+// Performs a product search by name or category and displays results.
+// If query is empty, reloads the default products view.
 function performSearch(query) {
     query = (query || '').trim().toLowerCase();
     // If query is empty, reload default products view
@@ -303,7 +314,8 @@ function performSearch(query) {
         });
 }
 
-// Wire the search input/button in the header to performSearch
+// Attaches event listeners to the search bar input and button.
+// On click or Enter key, performs a product search.
 function attachSearchHandler() {
     const searchBar = document.querySelector('.search-bar');
     if (!searchBar) return;
@@ -323,7 +335,7 @@ function attachSearchHandler() {
     });
 }
 
-// Initialize when the DOM is fully loaded
+// Initializes the product page: attaches search handler and loads products when DOM is ready.
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         attachSearchHandler();

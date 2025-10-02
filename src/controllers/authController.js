@@ -34,4 +34,4 @@ const logoutController = (req, res) => {
     res.json({ message: "Logged out" });
 };
 
-module.exports = { loginController, signupController , logoutController };
+module.exports = { loginController, logoutController };

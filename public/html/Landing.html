@@ -1,49 +1,55 @@
+<!-- HTML5 doctype declaration -->
 <!DOCTYPE html>
+<!-- Root HTML element, language set to English -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Style Hub</title>
-    <!-- Bootstrap CSS -->
+    <meta charset="UTF-8"> <!-- Ensures proper character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+    <title>Style Hub</title> <!-- Page title -->
+    <!-- Bootstrap CSS: Provides all Bootstrap classes for layout, components, and utilities -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
+    <!-- Font Awesome: Used for icon fonts (shopping cart, stars, etc.) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Custom CSS -->
+    <!-- Custom CSS: Your own styles for further customization -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <!-- Navbar -->
+    <!-- Navbar: Uses Bootstrap navbar classes for responsive navigation -->
+    <!-- navbar-expand-lg: Expands on large screens, collapses on small screens -->
+    <!-- navbar-light: Light color scheme -->
+    <!-- bg-white: White background -->
+    <!-- fixed-top: Sticks navbar to top of viewport -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-        <div class="container">
-            <a href="#" class="text-decoration-none">
-                <h1 class="h4 mb-0">Style Hub</h1>
+    <div class="container"> <!-- Bootstrap container for horizontal padding and centering -->
+            <a href="#" class="text-decoration-none"> <!-- Removes underline from link -->
+                <h1 class="h4 mb-0">Style Hub</h1> <!-- h4: Bootstrap heading size, mb-0: no bottom margin -->
             </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section: Large intro area with headline, description, and image -->
     <section class="hero-section">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-3 fw-bold mb-4">Elevate Your Style with Our Latest Collection</h1>
-                    <p class="lead mb-4">Discover exclusive fashion and electronics that match your unique personality. Limited time offers on trending items!</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="../html/home.html" class="btn btn-primary btn-lg px-4 py-3 fw-bold">
-                            <i class="fas fa-shopping-bag me-2"></i>Shop Now
+    <div class="container h-100"> <!-- h-100: Full height for vertical alignment -->
+            <div class="row h-100 align-items-center"> <!-- row: Bootstrap grid row, align-items-center: vertically center content -->
+                <div class="col-lg-6"> <!-- col-lg-6: Half width on large screens -->
+                    <h1 class="display-3 fw-bold mb-4">Elevate Your Style with Our Latest Collection</h1> <!-- display-3: Large heading, fw-bold: bold font, mb-4: margin bottom for spacing -->
+                    <p class="lead mb-4">Discover exclusive fashion and electronics that match your unique personality. Limited time offers on trending items!</p> <!-- lead: larger font for intro text, mb-4: spacing below -->
+                    <div class="d-flex flex-wrap gap-3"> <!-- d-flex: flexbox layout, flex-wrap: wrap items, gap-3: space between buttons -->
+                        <a href="../html/home.html" class="btn btn-primary btn-lg px-4 py-3 fw-bold"> <!-- btn: Bootstrap button, btn-primary: blue color, btn-lg: large size, px-4: horizontal padding, py-3: vertical padding, fw-bold: bold text -->
+                            <i class="fas fa-shopping-bag me-2"></i>Shop Now <!-- Font Awesome icon, me-2: margin end for spacing -->
                         </a>
-                        <a href="../html/home.html" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold">
-                            <i class="fas fa-tag me-2"></i>View Deals
+                        <a href="../html/home.html" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold"> <!-- btn-outline-light: outlined button style -->
+                            <i class="fas fa-tag me-2"></i>View Deals <!-- Font Awesome icon -->
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6 hero-image-container">
-                    <div class="hero-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fashion Collection" class="hero-image img-fluid rounded-4 shadow-lg">
-                        <div class="hero-badge">
-                            <span class="badge bg-primary p-3">
-                                <h5 class="mb-0">50% OFF</h5>
-                                <small>On First Order</small>
+                <div class="col-lg-6 hero-image-container"> <!-- Second column for image -->
+                    <div class="hero-image-wrapper"> <!-- Custom wrapper for image styling -->
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fashion Collection" class="hero-image img-fluid rounded-4 shadow-lg"> <!-- img-fluid: responsive image, rounded-4: large border radius, shadow-lg: large box shadow -->
+                        <div class="hero-badge"> <!-- Custom badge overlay -->
+                            <span class="badge bg-primary p-3"> <!-- badge: Bootstrap badge, bg-primary: blue background, p-3: padding -->
+                                <h5 class="mb-0">50% OFF</h5> <!-- mb-0: no margin below -->
+                                <small>On First Order</small> <!-- small: smaller text -->
                             </span>
                         </div>
                     </div>
@@ -52,21 +58,26 @@
         </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories-section py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Shop by Category</h2>
-            <div class="row g-4">
-                <div class="col-md-3 col-6">
+    <!-- Categories Section: Product categories in a grid -->
+    <section class="categories-section py-5 bg-light"> <!-- py-5: vertical padding, bg-light: light background -->
+    <div class="container"> <!-- Bootstrap container for centering and padding -->
+            <h2 class="text-center mb-5">Shop by Category</h2> <!-- text-center: center text, mb-5: large margin below -->
+            <div class="row g-4"> <!-- row: grid row, g-4: gap between columns -->
+                <div class="col-md-3 col-6"> <!-- col-md-3: 4 columns on medium screens, col-6: 2 columns on small screens -->
+                    <!-- card: Bootstrap card component for category display -->
+                    <!-- category-card: custom class for additional styling -->
+                    <!-- h-100: makes card fill available height -->
                     <div class="card category-card h-100">
+                        <!-- card-img-top: image at top of card -->
                         <img src="../images/1.jpg" class="card-img-top" alt="Men's Fashion">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Men's Fashion</h5>
-                            <a href="#" class="btn btn-outline-dark mt-2">Shop Now</a>
+                        <div class="card-body text-center"> <!-- card-body: content area, text-center: center text -->
+                            <h5 class="card-title">Men's Fashion</h5> <!-- card-title: Bootstrap card title -->
+                            <a href="#" class="btn btn-outline-dark mt-2">Shop Now</a> <!-- btn: button, btn-outline-dark: dark border, mt-2: margin top for spacing -->
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
+                    <!-- ...same structure as above for Women's Fashion category... -->
                     <div class="card category-card h-100">
                         <img src="../images/2.jpg" class="card-img-top" alt="Women's Fashion">
                         <div class="card-body text-center">
@@ -76,6 +87,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
+                    <!-- ...same structure as above for Electronics category... -->
                     <div class="card category-card h-100">
                         <img src="../images/3.jpg" class="card-img-top" alt="Electronics">
                         <div class="card-body text-center">
@@ -85,6 +97,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
+                    <!-- ...same structure as above for Bestsellers category... -->
                     <div class="card category-card h-100">
                         <img src="../images/4.jpg" class="card-img-top" alt="Bestsellers">
                         <div class="card-body text-center">
@@ -97,18 +110,19 @@
         </div>
     </section>
 
-    <!-- Bestsellers Section -->
-    <section class="bestsellers-section py-5">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-4">
+    <!-- Bestsellers Section: Displays top-selling products dynamically -->
+    <section class="bestsellers-section py-5"> <!-- py-5: vertical padding -->
+    <div class="container"> <!-- Bootstrap container for centering and padding -->
+            <div class="d-flex justify-content-between align-items-center mb-4"> <!-- d-flex: flexbox, justify-content-between: space between title and actions, align-items-center: vertical centering, mb-4: margin bottom -->
                 <h2>Bestsellers</h2>
             </div>
-            <div class="row g-4" id="bestsellers-row">
-                <!-- Products will be injected here -->
+            <div class="row g-4" id="bestsellers-row"> <!-- row: grid row, g-4: gap between columns -->
+                <!-- Products will be injected here by JavaScript -->
             </div>
         </div>
         <script>
         // Fetch best sellers from backend and render them
+        // This script uses fetch API to get product data and injects Bootstrap cards dynamically
         async function fetchAndRenderBestsellers() {
             try {
                 const res = await fetch('/api/products/best-sellers?limit=4');
@@ -117,23 +131,23 @@
                 row.innerHTML = '';
                 products.forEach(product => {
                     row.innerHTML += `
-                    <div class="col-md-3 col-6">
-                        <div class="card product-card h-100">
-                            <img src="${product.image_url || '../images/placeholder.png'}" class="card-img-top" alt="${product.name}">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="text-muted">${product.category}</span>
-                                    <div class="text-warning">
+                    <div class="col-md-3 col-6"> <!-- Responsive columns for product cards -->
+                        <div class="card product-card h-100"> <!-- card: Bootstrap card, product-card: custom class, h-100: fill height -->
+                            <img src="${product.image_url || '../images/placeholder.png'}" class="card-img-top" alt="${product.name}"> <!-- card-img-top: image at top -->
+                            <div class="card-body"> <!-- card-body: content area -->
+                                <div class="d-flex justify-content-between mb-2"> <!-- d-flex: flexbox, justify-content-between: space between category and rating, mb-2: margin bottom -->
+                                    <span class="text-muted">${product.category}</span> <!-- text-muted: muted color for category -->
+                                    <div class="text-warning"> <!-- text-warning: yellow color for stars -->
                                         ${'<i class="fas fa-star"></i>'.repeat(Math.floor(product.rate || 0))}
                                         ${(product.rate % 1) ? '<i class="fas fa-star-half-alt"></i>' : ''}
                                         ${'<i class="far fa-star"></i>'.repeat(5 - Math.ceil(product.rate || 0))}
                                     </div>
                                 </div>
-                                <h5 class="card-title">${product.name}</h5>
-                                <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">${product.name}</h5> <!-- card-title: product name -->
+                                <div class="d-flex justify-content-between align-items-center"> <!-- d-flex: flexbox, justify-content-between: price and actions, align-items-center: vertical centering -->
                                     <div>
-                                        ${product.old_price ? `<span class="text-decoration-line-through text-muted me-2">$${Number(product.old_price).toFixed(2)}</span>` : ''}
-                                        <span class="fw-bold">$${Number(product.price).toFixed(2)}</span>
+                                        ${product.old_price ? `<span class="text-decoration-line-through text-muted me-2">$${Number(product.old_price).toFixed(2)}</span>` : ''} <!-- text-decoration-line-through: strikethrough for old price, text-muted: muted color, me-2: margin end -->
+                                        <span class="fw-bold">$${Number(product.price).toFixed(2)}</span> <!-- fw-bold: bold price -->
                                     </div>
                                 </div>
                             </div>
@@ -149,22 +163,22 @@
         </script>
     </section>
 
-    <!-- Compact CTA Section -->
-    <section class="cta-section text-center py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h3 class="h2 fw-bold mb-3">Ready to Transform Your Style?</h3>
-                    <p class="mb-4">Get <span class="fw-bold">15% off</span> your first order!</p>
+    <!-- Compact CTA Section: Call to action for users -->
+    <section class="cta-section text-center py-5"> <!-- text-center: center text, py-5: vertical padding -->
+    <div class="container"> <!-- Bootstrap container for centering and padding -->
+            <div class="row justify-content-center"> <!-- row: grid row, justify-content-center: center content horizontally -->
+                <div class="col-lg-8"> <!-- col-lg-8: 8/12 width on large screens -->
+                    <h3 class="h2 fw-bold mb-3">Ready to Transform Your Style?</h3> <!-- h2: heading size, fw-bold: bold, mb-3: margin bottom -->
+                    <p class="mb-4">Get <span class="fw-bold">15% off</span> your first order!</p> <!-- mb-4: margin bottom, fw-bold: bold for offer -->
                     
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="../html/home.html" class="btn btn-primary px-4">
-                            <i class="fas fa-shopping-cart me-2"></i>Shop Now
+                    <div class="d-flex flex-wrap justify-content-center gap-3"> <!-- d-flex: flexbox, flex-wrap: wrap items, justify-content-center: center horizontally, gap-3: space between buttons -->
+                        <a href="../html/home.html" class="btn btn-primary px-4"> <!-- btn: button, btn-primary: blue, px-4: horizontal padding -->
+                            <i class="fas fa-shopping-cart me-2"></i>Shop Now <!-- Font Awesome icon, me-2: margin end -->
                         </a>
                     </div>
                     
-                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-3 text-white-50 small">
-                        <span class="text-white"><i class="fas fa-check-circle text-success me-1"></i> Free Shipping $50+</span>
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-3 text-white-50 small"> <!-- mt-3: margin top, text-white-50: semi-transparent white, small: small text -->
+                        <span class="text-white"><i class="fas fa-check-circle text-success me-1"></i> Free Shipping $50+</span> <!-- text-success: green icon, me-1: margin end -->
                         <span class="text-white"><i class="fas fa-check-circle text-success me-1"></i> 30-Day Returns</span>
                     </div>
                 </div>
@@ -172,23 +186,23 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-light py-5">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <h5 class="mb-3">Style Hub</h5>
+    <!-- Footer: Site info, navigation, newsletter, and social links -->
+    <footer class="bg-light py-5"> <!-- bg-light: light background, py-5: vertical padding -->
+    <div class="container"> <!-- Bootstrap container for centering and padding -->
+    <div class="row g-4"> <!-- row: grid row, g-4: gap between columns -->
+            <div class="col-lg-4"> <!-- col-lg-4: 4/12 width on large screens -->
+                <h5 class="mb-3">Style Hub</h5> <!-- h5: heading size, mb-3: margin bottom -->
                 <p>Your one-stop destination for the latest fashion and electronics. Quality products at affordable prices.</p>
-                <div class="social-links">
-                    <a href="facebook.com" class="text-dark me-2"><i class="fab fa-facebook-f"></i></a>
+                <div class="social-links"> <!-- Custom class for social icons -->
+                    <a href="facebook.com" class="text-dark me-2"><i class="fab fa-facebook-f"></i></a> <!-- text-dark: dark color, me-2: margin end -->
                     <a href="twitter.com" class="text-dark me-2"><i class="fab fa-twitter"></i></a>
                     <a href="instagram.com" class="text-dark me-2"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4">
-                <h6>Shop</h6>
-                <ul class="list-unstyled">
-                    <li><a href="Category/men.html" class="text-muted text-decoration-none">Men's Fashion</a></li>
+            <div class="col-lg-2 col-md-4"> <!-- col-lg-2: 2/12 width on large screens, col-md-4: 4/12 on medium screens -->
+                <h6>Shop</h6> <!-- h6: heading size -->
+                <ul class="list-unstyled"> <!-- list-unstyled: removes default list styles -->
+                    <li><a href="Category/men.html" class="text-muted text-decoration-none">Men's Fashion</a></li> <!-- text-muted: muted color, text-decoration-none: no underline -->
                     <li><a href="Category/women.html" class="text-muted text-decoration-none">Women's Fashion</a></li>
                     <li><a href="Category/electronics.html" class="text-muted text-decoration-none">Electronics</a></li>
                 </ul>
@@ -201,23 +215,23 @@
                     <li><a href="faq.html" class="text-muted text-decoration-none">FAQs</a></li>
                 </ul>
             </div>
-            <div class="col-lg-4 col-md-4 ms-lg-auto">
-                <div class="ms-lg-4">
+            <div class="col-lg-4 col-md-4 ms-lg-auto"> <!-- ms-lg-auto: left margin auto for alignment on large screens -->
+                <div class="ms-lg-4"> <!-- ms-lg-4: left margin for spacing -->
                     <h6>Newsletter</h6>
                     <p class="text-muted">Subscribe for updates and offers</p>
-                    <form class="mt-3">
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Your email">
-                            <button class="btn btn-primary" type="submit">
-                                <i class="fas fa-paper-plane"></i>
+                    <form class="mt-3"> <!-- mt-3: margin top -->
+                        <div class="input-group"> <!-- input-group: Bootstrap input group for email and button -->
+                            <input type="email" class="form-control" placeholder="Your email"> <!-- form-control: styled input -->
+                            <button class="btn btn-primary" type="submit"> <!-- btn: button, btn-primary: blue -->
+                                <i class="fas fa-paper-plane"></i> <!-- Font Awesome icon -->
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
-        <div class="row mt-4 pt-3 border-top">
-            <div class="col-12 text-center">
-                <p class="mb-0 text-muted">&copy; 2025 Style Hub. All rights reserved.</p>
+    <div class="row mt-4 pt-3 border-top"> <!-- mt-4: margin top, pt-3: padding top, border-top: top border -->
+            <div class="col-12 text-center"> <!-- col-12: full width, text-center: center text -->
+                <p class="mb-0 text-muted">&copy; 2025 Style Hub. All rights reserved.</p> <!-- mb-0: no margin bottom, text-muted: muted color -->
             </div>
         </div>
     </div>

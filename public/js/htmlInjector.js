@@ -1,13 +1,16 @@
+// Waits for the DOM to be loaded before running admin dashboard logic
 document.addEventListener("DOMContentLoaded", async () => {
+    // Get references to table body and add product button
     const tbody = document.getElementById("productsTableBody");
     const addProductBtn = document.getElementById("addProductBtn");
 
-    // Load products
+    // Loads products from the backend and populates the admin table
     try {
         const response = await fetch("/admin/dashboard/products");
         const products = await response.json();
 
         products.forEach(product => {
+            // Create a table row for each product
             const row = document.createElement("tr");
             row.innerHTML = `
                 <td>${product.id}</td>
@@ -24,18 +27,21 @@ document.addEventListener("DOMContentLoaded", async () => {
             tbody.appendChild(row);
         });
     } catch (err) {
+        // Show error if products fail to load
         console.error("Error loading products:", err);
         tbody.innerHTML = `<tr><td colspan="7">Failed to load products</td></tr>`;
     }
 
-    // Modal functionality
+    // Creates and displays the modal for adding a new product
     function createModal() {
+        // Prevent multiple modals
         if (document.getElementById("productModal")) return null;
 
         const modal = document.createElement("div");
         modal.id = "productModal";
         modal.className = "modal";
 
+        // Modal HTML structure for product form
         modal.innerHTML = `
             <div class="modal-content">
                 <button class="close">&times;</button>
@@ -79,19 +85,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         return modal;
     }
 
+    // Handles the add product button click: opens modal and wires up modal events
     addProductBtn.addEventListener("click", () => {
         const modal = createModal();
         if (!modal) return;
         modal.style.display = "flex";
 
+        // Function to close and remove the modal
         const closeModal = () => modal.remove();
 
+        // Close modal on X or Cancel button
         modal.querySelector(".close").addEventListener("click", closeModal);
         modal.querySelector("#cancelBtn").addEventListener("click", closeModal);
 
+        // Handle product form submission
         modal.querySelector("#productForm").addEventListener("submit", (e) => {
             e.preventDefault();
 
+            // Gather product data from form fields
             const productData = {
                 name: document.getElementById("productName").value,
                 category: document.getElementById("productCategory").value,
@@ -100,6 +111,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 image_url: "" // file upload to handle later
             };
 
+            // For now, just log product data and close modal
             console.log("Product to submit:", productData);
             closeModal();
         });

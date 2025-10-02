@@ -1,16 +1,17 @@
-const express = require('express');
-const app = express();
-const path = require('path');
-const pool = require('./config/db');
+// Import required modules
+const express = require('express'); // Express web framework
+const app = express(); // Create Express app instance
+const path = require('path'); // Node.js path utilities
+const pool = require('./config/db'); // PostgreSQL connection pool
 
-const port = process.env.PORT || 3000;
-const host = "0.0.0.0";
+const port = process.env.PORT || 3000; // Port to listen on
+const host = "0.0.0.0"; // Host address
 
-// Increase body parser limits to allow base64 image uploads in JSON
+// Middleware: Increase body parser limits to allow large JSON payloads (e.g., base64 images)
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// Serve static files (CSS, JS, images)
+// Middleware: Serve static files (CSS, JS, images) from /public
 app.use(express.static(path.join(__dirname, 'public'), {
     setHeaders: (res, path, stat) => {
         console.log('Serving static file:', path);
@@ -19,23 +20,23 @@ app.use(express.static(path.join(__dirname, 'public'), {
     redirect: false
 }));
 
-// Adds a specific route for any path ending with .html 
-// Also supports case insensitive requests
+// Route: Serve any .html file from /public/html (case-insensitive)
 app.get(/.*\.html$/i, (req, res, next) => {
     const fs = require('fs');
     const htmlRoot = path.join(__dirname, 'public', 'html');
 
-    // Creates a safe relative path
+    // Normalize and sanitize the requested path
     const relative = req.path.replace(/^\//, '').toLowerCase();
     const normalized = path.normalize(relative);
     const targetPath = path.join(htmlRoot, normalized);
 
-    // Ensure the resolved path stays within the htmlRoot directory
+    // Ensure the resolved path is inside /public/html
     const resolved = path.resolve(targetPath);
     if (!resolved.startsWith(path.resolve(htmlRoot))) {
         return res.status(400).send('Invalid path');
     }
 
+    // Serve the file if it exists, otherwise call next middleware
     if (fs.existsSync(resolved)) {
         res.sendFile(resolved, (err) => {
             if (err) {
@@ -48,14 +49,16 @@ app.get(/.*\.html$/i, (req, res, next) => {
     }
 });
 
+// Import authentication routes and middleware
 const authroutes = require('./src/routes/authRoutes.js');
 const {requireAuth} = require("./src/middlewares/authMiddleware");
-app.use('/auth', authroutes);
+app.use('/auth', authroutes); // Mount /auth routes
 
+// Import and mount product routes
 const productRoutes = require("./src/routes/productRoutes.js");
 app.use(productRoutes);
 
-// Home page products route with optional category filter
+// API: Get all products, optionally filtered by category
 app.get('/api/products', async (req, res) => {
     try {
         const { category } = req.query;
@@ -65,7 +68,7 @@ app.get('/api/products', async (req, res) => {
         const queryParams = [];
         
         if (category) {
-            //Used ILIKE for case insensitive comparison
+            // Filter by category (case-insensitive)
             query += ' WHERE LOWER(category) = LOWER($1)';
             queryParams.push(category);
             console.log('Query with category filter:', query, queryParams);
@@ -76,17 +79,19 @@ app.get('/api/products', async (req, res) => {
         query += ' ORDER BY created_at DESC';
         console.log('Final query:', query, queryParams);
         
+        // Query database and return products
         const result = await pool.query(query, queryParams);
         console.log('Found products:', result.rows.length);
         
         res.json(result.rows);
     } catch (err) {
+        // Error handling
         console.error('Error fetching products:', err);
         res.status(500).json({ error: 'Error fetching products' });
     }
 });
 
-//New Arrivals route
+// API: Get newest products (for "New Arrivals" section)
 app.get('/api/products/new-arrivals', async (req, res) => {
     try {
         const limit = parseInt(req.query.limit) || 4;
@@ -96,12 +101,13 @@ app.get('/api/products/new-arrivals', async (req, res) => {
         );
         res.json(newArrivals.rows);
     } catch (err) {
+        // Error handling
         console.error('Error fetching new arrivals:', err);
         res.status(500).json({ error: 'Error fetching new arrivals' });
     }
 });
 
-//Best Sellers route
+// API: Get best-selling products (for "Featured" section)
 app.get('/api/products/best-sellers', async (req, res) => {
     try {
         const limit = parseInt(req.query.limit) || 4;
@@ -111,13 +117,14 @@ app.get('/api/products/best-sellers', async (req, res) => {
         );
         res.json(bestSellers.rows);
     } catch (err) {
+        // Error handling
         console.error('Error fetching best sellers:', err);
         res.status(500).json({ error: 'Error fetching best sellers' });
     }
 });
 
 
-// API endpoint to get product by ID with detailed information
+// API: Get product details by product ID
 app.get('/api/products/:id', async (req, res) => {
     try {
         const { id } = req.params;
@@ -127,6 +134,7 @@ app.get('/api/products/:id', async (req, res) => {
             return res.status(400).json({ error: 'Invalid product ID' });
         }
         
+        // Query product details from database
         const result = await pool.query(
             `SELECT id, name, category, rate, price, image_url, description, 
                     created_at, sales_count 
@@ -139,7 +147,7 @@ app.get('/api/products/:id', async (req, res) => {
             return res.status(404).json({ error: 'Product not found' });
         }
         
-        // Format the response
+        // Format and send product response
         const product = result.rows[0];
         const response = {
             id: product.id,
@@ -155,12 +163,13 @@ app.get('/api/products/:id', async (req, res) => {
         
         res.json(response);
     } catch (err) {
+        // Error handling
         console.error('Error fetching product:', err);
         res.status(500).json({ error: 'Error fetching product' });
     }
 });
 
-//Routes
+// Page routes: Serve HTML files for each main page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'landing.html'));
 });
@@ -168,7 +177,6 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html' ,'home.html'));
 });
-
 
 app.get('/faq', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'faq.html'));
@@ -194,6 +202,7 @@ app.get('/service', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html' , 'customer-service.html'));
 });
 
+// Category page routes
 app.get('/category/Men', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'Category', 'Men.html'));
 });
@@ -206,6 +215,7 @@ app.get('/category/Electronics', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'Category', 'Electronics.html'));
 });
 
+// Admin login and dashboard routes
 app.get('/admin/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'admin' ,'login.html'));
 });
@@ -214,7 +224,7 @@ app.get('/admin/dashboard', requireAuth , (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html' , 'admin', 'dashboard.html'));
 });
 
-//Clears client side cart and redirect to checkout
+// Route: Clears client-side cart and redirects to checkout
 app.get('/clear-cart', (req, res) => {
     res.send(`
         <!doctype html>
@@ -237,26 +247,27 @@ app.get('/clear-cart', (req, res) => {
     `);
 });
 
-// Endpoint to record transactions when a user completes checkout
+// API: Record a transaction when a user completes checkout
 app.post('/api/transactions', async (req, res) => {
     const client = await pool.connect();
     try {
+        // Destructure transaction details from request body
         const { items, total_amount, payment_method, shipping_address, email } = req.body || {};
 
+        // Validate required fields
         if (!items || !Array.isArray(items) || items.length === 0) {
             return res.status(400).json({ error: 'Cart is empty' });
         }
-
-        // Basic validation
         if (!payment_method || !shipping_address || !email) {
             return res.status(400).json({ error: 'Missing payment method, shipping address, or email' });
         }
 
-        await client.query('BEGIN');
+        await client.query('BEGIN'); // Start transaction
         const inserted = [];
 
-        // Insert only one transaction per checkout, with all items in item_list
+        // Insert transaction record (one per checkout)
         const productId = Number(items[0]?.id || items[0]?.product_id);
+        // Calculate total amount (subtotal + shipping + tax)
         const amount = Number((items.reduce((sum, it) => sum + (Number(it.price) * (Number(it.quantity) || 1)), 0) + 5 + (items.reduce((sum, it) => sum + (Number(it.price) * (Number(it.quantity) || 1)), 0) * 0.10)).toFixed(2));
         const insertRes = await client.query(
             `INSERT INTO transactions (product_id, total_amount, payment_method, shipping_address, email, item_list)
@@ -264,7 +275,7 @@ app.post('/api/transactions', async (req, res) => {
             [productId, amount, payment_method, shipping_address, email, JSON.stringify(items)]
         );
 
-        // Update sales_count for each product
+        // Update sales_count for each product in the cart
         for (const it of items) {
             const quantity = Number(it.quantity) || 1;
             const prodId = Number(it.id || it.product_id);
@@ -273,18 +284,19 @@ app.post('/api/transactions', async (req, res) => {
             }
         }
 
-        await client.query('COMMIT');
+        await client.query('COMMIT'); // Commit transaction
         res.json({ success: true, inserted, total_amount });
     } catch (err) {
+        // Rollback on error
         try { await client.query('ROLLBACK'); } catch (e) { /* ignore */ }
         console.error('Error saving transaction:', err);
         res.status(500).json({ error: 'Failed to save transaction' });
     } finally {
-        client.release();
+        client.release(); // Release DB connection
     }
 });
 
-// Listening for requests on the port specified
+// Start the server and listen for requests
 app.listen(port, host, () => {
     console.log(`Listening at ${host}:${port}`);
 })

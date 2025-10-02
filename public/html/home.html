@@ -1,20 +1,22 @@
+<!-- HTML5 doctype declaration -->
 <!DOCTYPE html>
+<!-- Root HTML element, language set to English -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Style Hub</title>
-    <!-- Bootstrap CSS -->
+    <meta charset="UTF-8"> <!-- Ensures proper character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+    <title>Style Hub</title> <!-- Page title -->
+    <!-- Bootstrap CSS: Provides all Bootstrap classes for layout, components, and utilities -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
+    <!-- Font Awesome: Used for icon fonts (shopping cart, stars, etc.) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Custom CSS -->
+    <!-- Custom CSS: Your own styles for further customization -->
     <link rel="stylesheet" href="../css/styles.css">
     <style>
         body {
             margin: 0;
             padding: 0;
-        }
+        } /** Remove default margin and padding **/
         
         /* Home Page Specific Styles */
         .main-header {
@@ -134,39 +136,39 @@
     </style>
 </head>
 <body>
-    <!-- Header with Search -->
-    <header class="main-header">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-auto">
-                    <a href="#" class="text-decoration-none">
-                        <h1 class="h4 mb-0">Style Hub</h1>
+    <!-- Header with Search: Top bar with site name, search bar, cart, and admin login -->
+    <header class="main-header"> <!-- main-header: custom class for header styling -->
+    <div class="container"> <!-- Bootstrap container for horizontal padding and centering -->
+            <div class="row align-items-center"> <!-- row: Bootstrap grid row, align-items-center: vertically center content -->
+                <div class="col-auto"> <!-- col-auto: auto width for site name -->
+                    <a href="#" class="text-decoration-none"> <!-- Removes underline from link -->
+                        <h1 class="h4 mb-0">Style Hub</h1> <!-- h4: Bootstrap heading size, mb-0: no bottom margin -->
                     </a>
                 </div>
-                <div class="col">
-                    <div class="input-group search-bar" style="max-width: 500px; margin: 0 auto;">
-                        <input type="text" class="form-control" placeholder="Search products...">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fas fa-search"></i>
+                <div class="col"> <!-- col: fills remaining space for search bar -->
+                    <div class="input-group search-bar" style="max-width: 500px; margin: 0 auto;"> <!-- input-group: Bootstrap input group for search bar -->
+                        <input type="text" class="form-control" placeholder="Search products..."> <!-- form-control: styled input -->
+                        <button class="btn btn-primary" type="button"> <!-- btn: button, btn-primary: blue -->
+                            <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
                         </button>
                     </div>
                 </div>
-                <div class="col-auto px-15">
-                    <div class="d-flex w-100">
-                        <div class="d-flex align-items-center gap-3 me-auto">
-                            <div class="dropdown language-dropdown">
-                                <span class="btn btn-sm btn-outline-secondary">
-                                    <i class="fas fa-globe me-1"></i> EN
+                <div class="col-auto px-15"> <!-- col-auto: auto width for cart and admin login -->
+                    <div class="d-flex w-100"> <!-- d-flex: flexbox layout, w-100: full width -->
+                        <div class="d-flex align-items-center gap-3 me-auto"> <!-- align-items-center: vertical centering, gap-3: space between items, me-auto: push next section to right -->
+                            <div class="dropdown language-dropdown"> <!-- dropdown: Bootstrap dropdown for language selection -->
+                                <span class="btn btn-sm btn-outline-secondary"> <!-- btn-sm: small button, btn-outline-secondary: gray border -->
+                                    <i class="fas fa-globe me-1"></i> EN <!-- Font Awesome globe icon, me-1: margin end -->
                                 </span>
                             </div>
-                            <a href="/checkout" class="btn btn-outline-dark position-relative btn-add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
+                            <a href="/checkout" class="btn btn-outline-dark position-relative btn-add-to-cart"> <!-- btn-outline-dark: dark border, position-relative: for badge positioning -->
+                                <i class="fas fa-shopping-cart"></i> <!-- Font Awesome cart icon -->
                                 <span class="cart-counter position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" 
-                                    style="display: none;">0</span>
+                                    style="display: none;">0</span> <!-- badge: Bootstrap badge, bg-danger: red, rounded-pill: pill shape, position-absolute: absolute positioning for cart count -->
                             </a>
                         </div>
-                        <div class="px-2 ms-2">
-                        <a href="/admin/login" class="btn btn-outline-primary btn-sm ms-2 px-3">Admin Login</a>
+                        <div class="px-2 ms-2"> <!-- px-2: horizontal padding, ms-2: margin start -->
+                        <a href="/admin/login" class="btn btn-outline-primary btn-sm ms-2 px-3">Admin Login</a> <!-- btn-outline-primary: blue border, btn-sm: small, ms-2: margin start, px-3: horizontal padding -->
                         </div>
                     </div>
                 </div>
@@ -174,16 +176,16 @@
         </div>
     </header>
 
-    <!-- Main Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                <span class="navbar-toggler-icon"></span> Categories
+    <!-- Main Navigation: Bootstrap navbar for site navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom"> <!-- navbar-expand-lg: expands on large screens, navbar-light: light color, bg-white: white background, border-bottom: bottom border -->
+    <div class="container"> <!-- Bootstrap container for centering and padding -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"> <!-- navbar-toggler: hamburger menu for mobile -->
+                <span class="navbar-toggler-icon"></span> Categories <!-- navbar-toggler-icon: icon for toggler -->
             </button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/home">Home</a>
+            <div class="collapse navbar-collapse" id="mainNav"> <!-- collapse: collapsible menu for mobile -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!-- navbar-nav: nav links, me-auto: push right, mb-2: margin bottom, mb-lg-0: remove margin on large screens -->
+                    <li class="nav-item"> <!-- nav-item: navigation item -->
+                        <a class="nav-link active" href="/home">Home</a> <!-- nav-link: navigation link, active: current page -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="home.html#new-arrivals">New Arrivals</a>
@@ -191,12 +193,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="home.html#featured-products">Featured Products</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                    <li class="nav-item dropdown"> <!-- dropdown: Bootstrap dropdown for categories -->
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> <!-- dropdown-toggle: toggles dropdown menu -->
                             Categories
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="category/Men.html">Men's Fashion</a></li>
+                        <ul class="dropdown-menu"> <!-- dropdown-menu: menu for dropdown items -->
+                            <li><a class="dropdown-item" href="category/Men.html">Men's Fashion</a></li> <!-- dropdown-item: item in dropdown menu -->
                             <li><a class="dropdown-item" href="category/Women.html">Women's Fashion</a></li>
                             <li><a class="dropdown-item" href="category/Electronics.html">Electronics</a></li>
                         </ul>
@@ -206,58 +208,58 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="py-4">
-        <div class="container">
-            <!-- All Products -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2 class="section-title mb-0" style="font-size: 1.5rem;">All Products</h2>
+    <!-- Main Content: Product sections -->
+    <main class="py-4"> <!-- py-4: vertical padding -->
+    <div class="container"> <!-- Bootstrap container for centering and padding -->
+            <!-- All Products Section -->
+            <div class="d-flex justify-content-between align-items-center mb-3"> <!-- d-flex: flexbox, justify-content-between: space between title and actions, align-items-center: vertical centering, mb-3: margin bottom -->
+                <h2 class="section-title mb-0" style="font-size: 1.5rem;">All Products</h2> <!-- section-title: custom class, mb-0: no margin bottom -->
             </div>
-            <section class="mb-4 py-5">    
-                <div class="row g-2" id="all-products-container">
+            <section class="mb-4 py-5">    <!-- mb-4: margin bottom, py-5: vertical padding -->
+                <div class="row g-2" id="all-products-container"> <!-- row: grid row, g-2: gap between columns -->
                     <!-- Products will be loaded here dynamically by home-products.js -->
                 </div>
             </section>
 
-            <!-- New Arrivals -->
-            <section id="new-arrivals" class="mb-4 pt-3">
-                <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- New Arrivals Section -->
+            <section id="new-arrivals" class="mb-4 pt-3"> <!-- mb-4: margin bottom, pt-3: padding top -->
+                <div class="d-flex justify-content-between align-items-center mb-3"> <!-- d-flex: flexbox, justify-content-between: space between title and actions, align-items-center: vertical centering, mb-3: margin bottom -->
                     <h2 class="section-title mb-0" style="font-size: 1.5rem;">New Arrivals</h2>
                 </div>
-                <div class="row g-2" id="new-arrivals-container">
+                <div class="row g-2" id="new-arrivals-container"> <!-- row: grid row, g-2: gap between columns -->
                     <!-- New Arrivals will be loaded here dynamically by home-products.js -->
                 </div>
             </section>
 
-            <!-- Best Sellers -->
-            <section id="featured-products" class="mb-4 pt-3">
-                <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Best Sellers Section -->
+            <section id="featured-products" class="mb-4 pt-3"> <!-- mb-4: margin bottom, pt-3: padding top -->
+                <div class="d-flex justify-content-between align-items-center mb-3"> <!-- d-flex: flexbox, justify-content-between: space between title and actions, align-items-center: vertical centering, mb-3: margin bottom -->
                     <h2 class="section-title mb-0" style="font-size: 1.5rem;">Best Sellers</h2>
                 </div>
-                <div class="row g-2" id="featured-products-container">
+                <div class="row g-2" id="featured-products-container"> <!-- row: grid row, g-2: gap between columns -->
                     <!-- Best Sellers will be loaded here dynamically by home-products.js -->
                 </div>
             </section>
                 </div>
         </main>
 
-    <!-- Footer -->
-    <footer class="bg-light py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <h5 class="mb-3">Style Hub</h5>
+    <!-- Footer: Site info, navigation, newsletter, and social links -->
+    <footer class="bg-light py-5"> <!-- bg-light: light background, py-5: vertical padding -->
+    <div class="container"> <!-- Bootstrap container for centering and padding -->
+            <div class="row g-4"> <!-- row: grid row, g-4: gap between columns -->
+                <div class="col-lg-4"> <!-- col-lg-4: 4/12 width on large screens -->
+                    <h5 class="mb-3">Style Hub</h5> <!-- h5: heading size, mb-3: margin bottom -->
                     <p>Your one-stop destination for the latest fashion and electronics. Quality products at affordable prices.</p>
-                    <div class="social-links">
-                        <a href="facebook.com" class="text-dark me-2"><i class="fab fa-facebook-f"></i></a>
+                    <div class="social-links"> <!-- Custom class for social icons -->
+                        <a href="facebook.com" class="text-dark me-2"><i class="fab fa-facebook-f"></i></a> <!-- text-dark: dark color, me-2: margin end -->
                         <a href="twitter.com" class="text-dark me-2"><i class="fab fa-twitter"></i></a>
                         <a href="instagram.com" class="text-dark me-2"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4">
-                    <h6>Shop</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="/category/Men" class="text-muted text-decoration-none">Men's Fashion</a></li>
+                <div class="col-lg-2 col-md-4"> <!-- col-lg-2: 2/12 width on large screens, col-md-4: 4/12 on medium screens -->
+                    <h6>Shop</h6> <!-- h6: heading size -->
+                    <ul class="list-unstyled"> <!-- list-unstyled: removes default list styles -->
+                        <li><a href="/category/Men" class="text-muted text-decoration-none">Men's Fashion</a></li> <!-- text-muted: muted color, text-decoration-none: no underline -->
                         <li><a href="/category/Women" class="text-muted text-decoration-none">Women's Fashion</a></li>
                         <li><a href="/category/Electronics" class="text-muted text-decoration-none">Electronics</a></li>
                     </ul>
@@ -270,33 +272,33 @@
                         <li><a href="/faq" class="text-muted text-decoration-none">FAQs</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-4 ms-lg-auto">
-                    <div class="ms-lg-4">
+                <div class="col-lg-4 col-md-4 ms-lg-auto"> <!-- ms-lg-auto: left margin auto for alignment on large screens -->
+                    <div class="ms-lg-4"> <!-- ms-lg-4: left margin for spacing -->
                         <h6>Newsletter</h6>
                         <p class="text-muted">Subscribe for updates and offers</p>
-                        <form class="mt-3">
-                            <div class="input-group">
-                                <input type="email" class="form-control" placeholder="Your email">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fas fa-paper-plane"></i>
+                        <form class="mt-3"> <!-- mt-3: margin top -->
+                            <div class="input-group"> <!-- input-group: Bootstrap input group for email and button -->
+                                <input type="email" class="form-control" placeholder="Your email"> <!-- form-control: styled input -->
+                                <button class="btn btn-primary" type="submit"> <!-- btn: button, btn-primary: blue -->
+                                    <i class="fas fa-paper-plane"></i> <!-- Font Awesome icon -->
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
-            <div class="row mt-4 pt-3 border-top">
-                <div class="col-12 text-center">
-                    <p class="mb-0 text-muted">&copy; 2025 Style Hub. All rights reserved.</p>
+            <div class="row mt-4 pt-3 border-top"> <!-- mt-4: margin top, pt-3: padding top, border-top: top border -->
+                <div class="col-12 text-center"> <!-- col-12: full width, text-center: center text -->
+                    <p class="mb-0 text-muted">&copy; 2025 Style Hub. All rights reserved.</p> <!-- mb-0: no margin bottom, text-muted: muted color -->
                 </div>
             </div>
         </div>
         </footer>
     
-    <!-- Bootstrap JS and dependencies -->
+    <!-- Bootstrap JS and dependencies: Required for interactive Bootstrap components -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JavaScript -->
+    <!-- Custom JavaScript: Handles cart and product loading -->
     <script src="/js/cart.js"></script>
     <script src="../js/home-products.js"></script>
 </body>
