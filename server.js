@@ -4,7 +4,7 @@ const app = express(); // Create Express app instance
 const path = require('path'); // Node.js path utilities
 const pool = require('./config/db'); // PostgreSQL connection pool
 
-const port = process.env.PORT || 3000; // Port to listen on
+const port = 3000; // Port to listen on
 const host = "0.0.0.0"; // Host address
 
 // Middleware: Increase body parser limits to allow large JSON payloads (e.g., base64 images)
