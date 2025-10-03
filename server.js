@@ -12,8 +12,16 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Middleware: Serve static files (CSS, JS, images) from /public
-app.use(express.static(path.join(__dirname, 'public'), {
-    setHeaders: (res, path, stat) => {
+app.use(express.static(path.join(__dirname, "public"), {
+    maxAge: "1d", // default cache for 1 day
+    setHeaders: (res, filePath) => {
+        if (filePath.endsWith(".html")) {
+            // Don't cache HTML so changes show immediately
+            res.setHeader("Cache-Control", "no-cache");
+        } else {
+            // Cache other files (CSS, JS, images)
+            res.setHeader("Cache-Control", "public, max-age=86400");
+        }
         console.log('Serving static file:', path);
     },
     index: false,

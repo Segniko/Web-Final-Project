@@ -222,6 +222,8 @@
             
             <div class="row g-4">
                 <!-- Product Images -->
+                <!--The Image uses a placeholder URL initially. When product details are loaded JS updated the src attribute
+                of the img tage to show the actual image from the backend-->
                 <div class="col-lg-6">
                     <div class="product-image-main mb-3">
                         <img src="https://via.placeholder.com/600x700" alt="Product Image" class="img-fluid rounded-3 w-100">
@@ -229,6 +231,8 @@
                 </div>
                 
                 <!-- Product Info -->
+                <!--When the page loads, it shows "Loading..." until the product details are fetched from the backend.
+                    Once the data arrives from product-details.js it updates this element with the actual product name.-->
                 <div class="col-lg-6">
                     <h1 class="h2 mb-3 product-title">Loading...</h1>
                     
@@ -244,6 +248,7 @@
                     </div>
                     
                     <!-- Price -->
+                    <!--$0.00 is a placeholder value. It appears while the product price is being loaded-->
                     <div class="mb-4">
                         <span class="h4 text-primary fw-bold product-price">$0.00</span>
                     </div>
