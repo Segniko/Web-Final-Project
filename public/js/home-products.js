@@ -12,7 +12,6 @@ function createProductCard(product, showCategory = true) {
                 </div>
                 <div class="card-body p-3">
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        ${showCategory ? `<span class="badge bg-primary">${product.category}</span>` : ''}
                         <div class="text-warning">
                             ${'<i class="fas fa-star"></i>'.repeat(Math.floor(product.rate || 0))}
                             ${(product.rate % 1) ? '<i class="fas fa-star-half-alt"></i>' : ''}
