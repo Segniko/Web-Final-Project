@@ -22,7 +22,6 @@ app.use(express.static(path.join(__dirname, "public"), {
             // Cache other files (CSS, JS, images)
             res.setHeader("Cache-Control", "public, max-age=86400");
         }
-        console.log('Serving static file:', path);
     },
     index: false,
     redirect: false
