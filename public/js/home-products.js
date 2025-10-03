@@ -1,6 +1,5 @@
 // Creates a Bootstrap product card HTML for a given product object.
 // Includes product image, name, price, rating, and an add-to-cart button.
-// If showCategory is true, displays the category badge.
 function createProductCard(product, showCategory = true) {
     return `
         <div class="col-md-3 col-6 mb-4">
